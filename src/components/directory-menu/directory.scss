@@ -1,0 +1,11 @@
+.directory-menu {
+    display: grid;
+    grid-template-rows: 70vh 30vh;
+    grid-template-columns: repeat(8, 1fr);
+    .cover-image {
+        background-image: url('../../img/3093524.jpg');
+        background-size: cover;
+        grid-column: 1/9;
+        margin: 10px;
+    }
+}

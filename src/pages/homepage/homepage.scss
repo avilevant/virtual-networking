@@ -1,100 +1,99 @@
-* {
+.homepage {
     margin: 0;
     padding: 0;
-    background-color: grey;
-}
-
-.homepage {
-    display: grid;
-    grid-template-rows: 70vh 30vh;
-    grid-template-columns: repeat(8, 1fr);
-    .cover-image {
-        background-image: url('../../img/3093524.jpg');
-        background-size: cover;
-        grid-column: 1/9;
-        margin: 10px;
-    }
-    .menu-item {
-        padding: 10px;
-        margin: 10px;
-        // &:first-child {
-        //     margin-right: 20px;
-        // }
-        // &:last-child {
-        //     margin-right: 20px;
-        // }
-        .item-logo {
-            height: 100px;
-            width: 100px;
-            position: relative;
-            left: 50%;
-            top: 35%;
-            transform: translate(-50%, -50%);
-            background-color: transparent;
-            &-1 {
-                background-image: url('../../img/place.png');
-                background-size: contain;
-            }
-            &-2 {
-                background-image: url('../../img/global.png');
-                background-size: contain;
-            }
-            &-3 {
-                background-image: url('../../img/facebook.png');
-                background-size: contain;
-            }
-            &-4 {
-                background-image: url('../../img/whatsapp.png');
-                background-size: contain;
-            }
-            &-5 {
-                background-image: url('../../img/youtube.png');
-                background-size: contain;
-            }
-            &-6 {
-                background-image: url('../../img/instagram.png');
-                background-size: contain;
-            }
-            &-7 {
-                background-image: url('../../img/linkedin.png');
-                background-size: contain;
-            }
-            &-8 {
-                background-image: url('../../img/email.png');
-                background-size: contain;
-            }
-        }
-        .item-title {
-            color: whitesmoke;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 600;
-            background-color: transparent;
-            margin-top: 15px;
-        }
-        &-1 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-2 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-3 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-4 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-5 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-6 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-7 {
-            background-color: rgb(73, 71, 71);
-        }
-        &-8 {
-            background-color: rgb(73, 71, 71);
-        }
-    }
+    background-color: black;
+    // .directory-menu {
+    //     display: grid;
+    //     grid-template-rows: 70vh 30vh;
+    //     grid-template-columns: repeat(8, 1fr);
+    // .cover-image {
+    //     background-image: url('../../img/3093524.jpg');
+    //     background-size: cover;
+    //     grid-column: 1/9;
+    //     margin: 10px;
+    // }
+    //     .menu-item {
+    //         padding: 10px;
+    //         margin: 10px;
+    //         // &:first-child {
+    //         //     margin-right: 20px;
+    //         // }
+    //         // &:last-child {
+    //         //     margin-right: 20px;
+    //         // }
+    //         .item-logo {
+    //             height: 100px;
+    //             width: 100px;
+    //             position: relative;
+    //             left: 50%;
+    //             top: 35%;
+    //             transform: translate(-50%, -50%);
+    //             background-color: transparent;
+    //             &-1 {
+    //                 background-image: url('../../img/place.png');
+    //                 background-size: contain;
+    //             }
+    //             &-2 {
+    //                 background-image: url('../../img/global.png');
+    //                 background-size: contain;
+    //             }
+    //             &-3 {
+    //                 background-image: url('../../img/facebook.png');
+    //                 background-size: contain;
+    //             }
+    //             &-4 {
+    //                 background-image: url('../../img/whatsapp.png');
+    //                 background-size: contain;
+    //             }
+    //             &-5 {
+    //                 background-image: url('../../img/youtube.png');
+    //                 background-size: contain;
+    //             }
+    //             &-6 {
+    //                 background-image: url('../../img/instagram.png');
+    //                 background-size: contain;
+    //             }
+    //             &-7 {
+    //                 background-image: url('../../img/linkedin.png');
+    //                 background-size: contain;
+    //             }
+    //             &-8 {
+    //                 background-image: url('../../img/email.png');
+    //                 background-size: contain;
+    //             }
+    //         }
+    //         .item-title {
+    //             color: whitesmoke;
+    //             text-align: center;
+    //             font-size: 16px;
+    //             font-weight: 600;
+    //             background-color: transparent;
+    //             margin-top: 15px;
+    //         }
+    //         &-1 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-2 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-3 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-4 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-5 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-6 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-7 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //         &-8 {
+    //             background-color: rgb(73, 71, 71);
+    //         }
+    //     }
+    // }
 }

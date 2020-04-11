@@ -1,0 +1,48 @@
+    .menu-item {
+        padding: 10px;
+        margin: 10px;
+        background-color: rgb(73, 71, 71);
+        &:hover {
+            cursor: pointer;
+            transform: translateY(-10px) scale(1.05);
+            transition: .5s;
+        }
+        //  background-size: auto;
+        // &:first-child {
+        //     margin-right: 20px;
+        // }
+        // &:last-child {
+        //     margin-right: 20px;
+        // }
+        .item-logo {
+            height: 100px;
+            width: 100px;
+            position: relative;
+            left: 50%;
+            top: 35%;
+            transform: translate(-50%, -50%);
+            background-size: contain;
+            //background-image: url('../../img/facebook.png');
+            background-color: transparent;
+        }
+        .item-title {
+            color: whitesmoke;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: transparent;
+            margin-top: 15px;
+        }
+    }
+    
+    ion-icon {
+        height: 100px;
+        width: 100px;
+        position: relative;
+        left: 50%;
+        top: 35%;
+        transform: translate(-50%, -50%);
+        background-size: contain;
+        //background-image: url('../../img/facebook.png');
+        background-color: transparent;
+    }

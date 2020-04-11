@@ -41,7 +41,7 @@ class Directory extends React.Component{
                     id:6
                 },
                 {
-                    title:'LINKDIN',
+                    title:'LINKEDIN',
                     icon:<ion-icon name="logo-linkedin"></ion-icon>,
                     id:7
                 },

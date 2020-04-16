@@ -43,7 +43,7 @@ class SignUp extends React.Component{
             <form onSubmit={this.handleSubmit}>
             
             <div>
-            <label for="email"><ion-icon name="location-outline"></ion-icon></label>
+           
             <input className='input' name='name' type='string' value={this.state.name} placeholder='Full Name' onChange={this.handleChange} required ></input>
             </div>
 

@@ -10,11 +10,29 @@ class SignIn extends React.Component{
         password:''
     } 
 } 
+
+
+    componentDidMount(){
+        fetch('http://localhost:3003/api')
+        .then(response => response.json())
+        .then(console.log)
+    }
      
     handleSubmit = (event) => {
         event.preventDefault();
+        fetch('http://localhost:3003/signin', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email:this.state.email,
+                password:this.state.password
+            })
 
-    this.setState({email:'',password:''})     
+        })
+
+        
+
+        this.setState({email:'',password:''})     
 
     }
 

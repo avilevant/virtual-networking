@@ -1,0 +1,14 @@
+.sign-in {
+    padding: 10px;
+    margin: 10px;
+    .input {
+        border: none;
+        border-bottom: 2px solid black;
+        margin-bottom: 15px;
+    }
+    .icon {
+        padding: 1px;
+        min-width: 40px;
+        border-bottom: 2px solid black;
+    }
+}

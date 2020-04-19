@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-in.scss';
-import {Redirect, Route} from 'react-router-dom';
-
+import {Redirect, Route, withRouter} from 'react-router-dom';
+  
 
 class SignIn extends React.Component{
     constructor(){
@@ -34,23 +34,10 @@ class SignIn extends React.Component{
         .then(response =>response.json())
         .then(data=>{
             if(data==='success'){
-                
-                return(
-                                
-                <Route exact path="/signup" render={()=><Redirect to="/"/>}/>
-                
-                               
-                    
-                )
-
-                    
-                }else(
+                this.props.history.push('/'); 
+            } else (
                     prompt('user name or password incorrect')
                 )
-
-                
-                
-
             }
         )
 
@@ -89,12 +76,6 @@ class SignIn extends React.Component{
             </div>
         )
     }
-   
-    
-
-
 }
 
-
-
-export default SignIn;
+export default withRouter(SignIn);

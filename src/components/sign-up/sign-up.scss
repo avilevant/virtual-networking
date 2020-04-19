@@ -8,11 +8,9 @@
         border-bottom: 2px solid black;
         margin-bottom: 15px;
     }
-    ion-icon {
-        height: 20px;
-        width: 20px;
+    .icon {
+        padding: 1px;
+        min-width: 40px;
         border-bottom: 2px solid black;
-        display: inline-flex;
-        justify-self: start;
     }
 }

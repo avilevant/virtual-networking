@@ -1,6 +1,7 @@
 import React from 'react';
 import './sign-in.scss';
-import {Redirect, Route, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import signinPic from '../../img/3094352.jpg'
   
 
 class SignIn extends React.Component{
@@ -14,11 +15,6 @@ class SignIn extends React.Component{
 } 
 
 
-    componentDidMount(){
-        fetch('http://localhost:3003/api')
-        .then(response => response.json())
-        .then(console.log)
-    }
      
     handleSubmit = (event) => {
         event.preventDefault();
@@ -32,8 +28,9 @@ class SignIn extends React.Component{
 
         })
         .then(response =>response.json())
-        .then(data=>{
-            if(data==='success'){
+        .then(data=> {
+            
+            if(data.id){
                 this.props.history.push('/'); 
             } else (
                     prompt('user name or password incorrect')
@@ -41,7 +38,7 @@ class SignIn extends React.Component{
             }
         )
 
-        console.log(this.state)
+       console.log(this.state)
 
         
 
@@ -57,8 +54,11 @@ class SignIn extends React.Component{
 
     render(){
         return(
+             
+        <div className="container">
+                 
             <div className='sign-in'>
-            <h1>Sign In</h1>
+            <h1 className="header" >Sign In</h1>
             <form onSubmit={this.handleSubmit}>
             <div>
             
@@ -69,11 +69,13 @@ class SignIn extends React.Component{
             <i className="fa fa-key icon"></i> 
             <input className='input' name='password' type='password' value={this.state.password} placeholder='password' onChange={this.handleChange} required ></input>
             </div>
-            
-            <input type='submit' value='submit Form'></input>
+            <input type='submit' value='submit Form' className='button'></input>
             </form>
 
             </div>
+            <img src={signinPic} className="img" alt="signin"></img> 
+        </div>
+         
         )
     }
 }

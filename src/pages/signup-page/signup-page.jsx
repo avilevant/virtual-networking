@@ -1,5 +1,4 @@
 import React from 'react';
-import SignIn from '../../components/sign-in/sign-in';
 import SignUp from '../../components/sign-up/sign-up';
 
 
@@ -8,9 +7,7 @@ import SignUp from '../../components/sign-up/sign-up';
 const SignUpPage = () =>{
 
     return(
-        <div>
-        
-        <SignIn/>
+        <div className='sign'>
         <SignUp/>
         </div>
     )

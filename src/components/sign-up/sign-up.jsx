@@ -22,26 +22,37 @@ class SignUp extends React.Component{
      
     handleSubmit = (event) => {
         event.preventDefault();
+        const newUser = this.state
 
-     if(this.state.password === this.state.validPassword){
+     if(newUser.password === newUser.validPassword){
         
         fetch('http://localhost:3003/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                name:this.state.name,
-                phone:this.state.phone,
-                email:this.state.email,
-                password:this.state.password
+                name:newUser.name,
+                phone:newUser.phone,
+                email:newUser.email,
+                password:newUser.password
             })
 
         })
+        .then(response=> response.json())
+        .then(data=>{
+            if(data==='23505'){
+                prompt('email already exists')
+            }else{
+                this.props.history.push('/profile');
+                console.log(newUser)
+            }
 
-        this.props.history.push('/profile');
-        console.log(this.state)
+        })
+
+
+        
                
         }else{
-            prompt('passwords dont match')
+            prompt('passwords do not match')
         }
         this.setState({name:'', email:'',password:'',phone:'',validPassword:''})
 

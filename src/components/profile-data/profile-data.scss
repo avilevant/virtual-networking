@@ -1,0 +1,50 @@
+.profile {
+    margin: auto;
+    padding: 50px;
+    .header {
+        margin-bottom: 40px;
+    }
+    .input {
+        border: none;
+        padding:5px;
+        border-bottom: 2px solid black;
+        margin-bottom: 35px;
+    }
+    .icon {
+        padding: 4px;
+       // min-width: 40px;
+        border-bottom: 2px solid black;
+        background-color: transparent;
+        font-size: 22px;
+
+        &-1{
+            padding: 4.5px;
+        }
+    }
+
+    .drop-my-business {
+        margin-bottom: 20px;
+    }
+    .button {
+        background-color: #00DFC0;
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+        color: #2A454E;
+        font-family: Arial;
+        font-size: 17px;
+        font-weight: bold;
+        padding: 12px 44px;
+        text-decoration: none;
+        box-shadow: 3px 4px 0px 0px #009C86;
+        margin-top: 40px;
+        &:hover {
+            background-color: #2A454E;
+            color: #00DFC0;
+        }
+        &:active {
+            position: relative;
+            top: 3px;
+        }
+    }
+}

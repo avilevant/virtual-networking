@@ -1,12 +1,12 @@
-//import React,{ useState } from 'react';
-import React from 'react';
+import React,{ useState } from 'react';
+// import React from 'react';
 import MultiSelect from "react-multi-select-component";
 
 
 
 
 
-const DropSelect = ()=>{
+const DropSelect = (props)=>{
      const items  = [
     
                 {
@@ -24,11 +24,19 @@ const DropSelect = ()=>{
             ]
 
 
-            // const [selected, setSelected] = useState([]);
+            const [selected, setSelected] = useState([]);
 
             
+              
+            
+              // const tempfunction=() =>{
+              //   const BizzNetMember = selected.map(x=>x.label)
+              //   props.importData(BizzNetMember)
+              // }
 
-            // BizzNetArray = selected.map(x=>x.label)
+              const BizzNetMember = selected.map(x=>x.label)
+              console.log(BizzNetMember)
+            
           
             
             
@@ -39,11 +47,15 @@ const DropSelect = ()=>{
               
                 <MultiSelect
                   options={items}
-                  // value={selected}
-                  // onChange={setSelected}
+                  value={selected}
+                  onChange={setSelected}
                   labelledBy={"Select"}
-
+                  // filterOptions={tempfunction}
+                  
+                  
                 />
+                
+
               </div>
             );
           

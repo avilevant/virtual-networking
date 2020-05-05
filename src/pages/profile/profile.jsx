@@ -2,13 +2,16 @@ import React from 'react';
 import DropSelect from "../../components/drop-select/drop-select";
 import './profile.scss';
 //import ProfileData from '../../components/profile-data/profile-data'
+import Checkbox from '../../components/checkbox/checkbox';
+import BusinessList from '../../components/business-list/business-list'
 
-const numberOfCards = 8
+
+
 
 class Profile extends React.Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state={
             name:'',
@@ -21,7 +24,8 @@ class Profile extends React.Component{
             youTube:'',
             arrayOfCards:[],
             mybizz:'',
-            selected:[]
+            BizzNetArray:[],
+            list:BusinessList
 
 
         }
@@ -67,25 +71,27 @@ class Profile extends React.Component{
         const{value, name} = event.target;
         console.log(name,value)
         this.setState({[name]:value})
-        // console.log(this.state.mybizz.value)
-        // console.log(event.target.value)
+       
     }
 
-    FuncBizzNetArray = ()=>{
-       const BizzNetArray= this.state.selected.map(x=>x.label)
-    console.log(BizzNetArray)
-    } 
+    FuncBizzNetArray = (BizzNetMember)=>{
+        // const newArr =[...this.state.BizzNetArray, BizzNetMember]
+        // this.setState({BizzNetarray :newArr})
+           
+        // setTimeout(()=>{
+        //     console.log(this.state.BizzNetArray)
+        // },0)  
 
-   
+        console.log(BizzNetMember)
+    }
+        
+    
+ 
 
-   
-
-//create an array of 8 cards,and then stop with a message 
-//problem one- can still check after finishing 8, problem 2- can accept the same value more the once
-    cardSelect = (event)=>{
-        console.log('reading data' ,event.target.value,'  ',event.target.name)
-        if(this.state.arrayOfCards.length<numberOfCards){
-            const newVal = event.target.value
+    cardSelect = (Checkbox)=>{
+       
+        
+            const newVal = Checkbox
             if(!this.state.arrayOfCards.includes(newVal)){
                 const newArr =[...this.state.arrayOfCards, newVal]
                 this.setState({arrayOfCards:newArr})
@@ -94,18 +100,32 @@ class Profile extends React.Component{
                  
             setTimeout(()=>{
                 console.log(this.state.arrayOfCards)
+                console.log(Checkbox)
             },0)  
-            // console.log(this.state.cardNum)
-        }
-        else{
-            console.log(`choose only ${numberOfCards} cards`)
-            
-            event.preventDefault()
-            
-        }
+        
 
     }
+
    
+    
+
+    createCheckbox = (params) => (
+        <Checkbox
+                arrayLength={this.state.arrayOfCards.length}
+                label={params.label}
+                handleCheckboxChange={this.cardSelect}
+                key={params.id}
+                 />
+      )
+
+    
+    
+      createCheckboxes = () => (
+        this.state.list.map(this.createCheckbox)
+       
+      )  
+   
+    
 
     
 render(){
@@ -170,86 +190,16 @@ render(){
            </div>
 
            <div>
-           <DropSelect 
-           value={this.state.selected}
-           onChange={this.FuncBizzNetArray}
-           />
+           
+           <DropSelect  importData={this.FuncBizzNetArray}/>
+            
+
            </div>
 
            <div className='choseCards'>
            <h1 className="header" >choose your cards for display</h1>
-
-           <div className='card'>
-            <input type="Checkbox" name='callBusiness' value="callBusiness"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">call the business</label>
+           {this.createCheckboxes()}
            </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='sendSms' value="sendSms"
-           
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">send the business an sms</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='sendWhatsApp' value="sendWhatsApp"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">send the business a whatsApp Message</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='sendEmail' value="sendEmail"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">send the business an email</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='navigate' value="navigate"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">navigate to business</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='faceBook' value="faceBook"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">watch the business faceBook page</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='webSite' value="webSite"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">open the business webSite</label>
-           </div>
-
-           <div className='card'>
-            <input type="Checkbox" name='youTube' value="youTube"
-            
-            onChange={this.cardSelect}></input>
-            <label htmlFor="">watch the business youTube page</label>
-           </div>
-
-           <div className='card'>
-           <input type="Checkbox" name='instagram' value="instagram"
-           
-           onChange={this.cardSelect}></input>
-           <label htmlFor="">watch the business instagram page</label>
-          </div>
-
-          <div className='card'>
-           <input type="Checkbox" name='linkDin' value="linkDin"
-           onChange={this.cardSelect}></input>
-           <label htmlFor="">watch the business linkDin page</label>
-          </div>
-
-
-            </div>
 
 
                

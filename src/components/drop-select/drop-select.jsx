@@ -7,6 +7,8 @@ import MultiSelect from "react-multi-select-component";
 
 
 const DropSelect = (props)=>{
+
+
      const items  = [
     
                 {
@@ -29,13 +31,16 @@ const DropSelect = (props)=>{
             
               
             
-              // const tempfunction=() =>{
-              //   const BizzNetMember = selected.map(x=>x.label)
-              //   props.importData(BizzNetMember)
-              // }
+              const tempfunction=(x) =>{
+                const  { importData } = props;
 
-              const BizzNetMember = selected.map(x=>x.label)
-              console.log(BizzNetMember)
+                const BizzNetMembers = x.map(x=>x.label)
+                importData(BizzNetMembers)
+              }
+
+              // const BizzNetMember = selected.map(x=>x.label)
+              // console.log(BizzNetMember)
+              // props.importData(BizzNetMember);
             
           
             
@@ -48,9 +53,8 @@ const DropSelect = (props)=>{
                 <MultiSelect
                   options={items}
                   value={selected}
-                  onChange={setSelected}
+                  onChange={(x) => {tempfunction(x); setSelected(x)}}
                   labelledBy={"Select"}
-                  // filterOptions={tempfunction}
                   
                   
                 />

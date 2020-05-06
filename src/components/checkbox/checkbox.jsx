@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './checkbox.scss';
 
-const numberOfCards = 2
 
 class Checkbox extends React.Component {
   state = {
@@ -11,19 +10,25 @@ class Checkbox extends React.Component {
   }
 
   toggleCheckboxChange = () => {
-    const { handleCheckboxChange, label } = this.props;
+    const  { handleCheckboxChange, canIAdd } = this.props;
 
-    this.setState(({ isChecked }) => (
-      {
-        isChecked: !isChecked,
-      }
-    ));
+    if(!canIAdd() && !this.state.isChecked){
 
-    handleCheckboxChange(label);
+        console.log('cant add')
+        return;
+    }
+
+    const newState = !this.state.isChecked
+    this.setState({isChecked: newState})
+    console.log('yes i can')
+
+    handleCheckboxChange(this.props.myId, newState);
+
   }
 
   render() {
-    const { label, arrayLength, id } = this.props;
+    const  label = this.props.label;
+    const id = this.props.id;
     const { isChecked } = this.state;
 
     return (
@@ -33,7 +38,8 @@ class Checkbox extends React.Component {
                             type="checkbox"
                             value={label}
                             checked={isChecked}
-                            onChange={arrayLength< numberOfCards ? this.toggleCheckboxChange : console.log(`choose only ${numberOfCards} cards`)}
+                            onChange={() => {this.toggleCheckboxChange() }}
+                            //onChange={ /* add check herer */arrayLength< numberOfCards || this.state.isChecked ? this.//toggleCheckboxChange : console.log(`choose only ${numberOfCards} cards`)}
                             key={id}
                         />
 

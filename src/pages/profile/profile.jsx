@@ -5,6 +5,7 @@ import './profile.scss';
 import Checkbox from '../../components/checkbox/checkbox';
 import BusinessList from '../../components/business-list/business-list'
 
+const numberOfCards = 8
 
 
 
@@ -26,16 +27,18 @@ class Profile extends React.Component{
             mybizz:'',
             BizzNetArray:[],
             list:BusinessList
-
-
+            
         }
+
+       
     }
 
     
 
 
-    handleSubmit = (event) => {
+    handleSubmit = (event,props) => {
         event.preventDefault();
+
         fetch('http://localhost:3003/profile', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -56,14 +59,16 @@ class Profile extends React.Component{
         .then(response =>response.json())
         .then(data=> {
            
-           
+           console.log('this data has been sent: ', data)
             }
         )
 
       
     
 
-    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:''}) 
+    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:''})
+    
+    this.props.isChecked = false
 
     }
 
@@ -74,45 +79,68 @@ class Profile extends React.Component{
        
     }
 
+    // BizzNetMember: array of strings, each is a business label
     FuncBizzNetArray = (BizzNetMember)=>{
-        // const newArr =[...this.state.BizzNetArray, BizzNetMember]
-        // this.setState({BizzNetarray :newArr})
+        console.log("new BizNetMember: ", JSON.stringify(BizzNetMember));
+        this.setState({BizzNetArray :BizzNetMember});
            
-        // setTimeout(()=>{
-        //     console.log(this.state.BizzNetArray)
-        // },0)  
+        setTimeout(()=>{
+            console.log(this.state.BizzNetArray)
+        },0)  
 
-        console.log(BizzNetMember)
+       
     }
+      //  
+    
         
     
  
-
-    cardSelect = (Checkbox)=>{
+    //gets the following params:
+    //  id: integer
+    //  isChecked: boolean
+    cardSelect = (id, isChecked)=>{
        
         
-            const newVal = Checkbox
-            if(!this.state.arrayOfCards.includes(newVal)){
+            const newVal = id
+            if(!this.state.arrayOfCards.includes(newVal) && isChecked){
+                console.log("changing state", id, isChecked )
                 const newArr =[...this.state.arrayOfCards, newVal]
                 this.setState({arrayOfCards:newArr})
                 
-            }     
+            }else if (this.state.arrayOfCards.includes(newVal) && !isChecked){
+                console.log("changing state", id, isChecked )
+                const newArr = this.state.arrayOfCards.filter(id => id !== newVal)
+                this.setState({arrayOfCards:newArr})
+            }
                  
             setTimeout(()=>{
                 console.log(this.state.arrayOfCards)
-                console.log(Checkbox)
+                // console.log(Checkbox)
             },0)  
         
 
     }
 
    
+    checkCanIAdd = ()=>{
+        if(this.state.arrayOfCards.length+1 >numberOfCards){
+            return false
+        }else{
+            return true
+        }
+    }
+        
+        
+        
+
     
 
     createCheckbox = (params) => (
         <Checkbox
-                arrayLength={this.state.arrayOfCards.length}
+                
+                canIAdd={this.checkCanIAdd}
                 label={params.label}
+                myId={params.id}
                 handleCheckboxChange={this.cardSelect}
                 key={params.id}
                  />
@@ -190,10 +218,7 @@ render(){
            </div>
 
            <div>
-           
            <DropSelect  importData={this.FuncBizzNetArray}/>
-            
-
            </div>
 
            <div className='choseCards'>
@@ -202,12 +227,6 @@ render(){
            </div>
 
 
-               
-        
-           
-           
-
-           
       
            <input type='submit' value='submit Form' className='button'></input>
            </div>

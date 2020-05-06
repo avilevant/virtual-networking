@@ -39,7 +39,7 @@ const BusinessList = [
     },
     {
         id:10,
-        label:'watch the business linkDin page'
+        label:'watch the business linkedIn page'
     },
 
 ]

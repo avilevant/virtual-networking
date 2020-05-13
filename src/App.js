@@ -5,6 +5,7 @@ import HomePage from './pages/homepage/homepage.component';
 import SignUpPage from './pages/signup-page/signup-page';
 import SignInPage from './pages/signin-page/signin-page';
 import Profile from './pages/profile/profile';
+import PersonalProfile from './pages/personal-profile/personal-profile'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div>
     <Switch>
     <Route exact path='/' component ={HomePage}/>
+    <Route exact path='/personalprofile' component ={PersonalProfile}/>
     <Route path='/signup' component ={SignUpPage}/>
     <Route path='/profile' component ={Profile}/>
     <Route path='/signin' component ={SignInPage}/>

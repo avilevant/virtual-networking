@@ -1,70 +1,50 @@
 import React from 'react';
 import './directory.scss';
 import MenuItem from '../menu-item/menu-item';
+import CardList from '../card-list/card-list';
 
 
 
 class Directory extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
-            buttons:[
-                {
-                    title:'LOCATION',
-                    icon:<ion-icon name="location-outline"></ion-icon>,
-                    id:1
-                },
-                {
-                    title:'WEBSITE',
-                    icon: <ion-icon name="globe-outline"></ion-icon>,
-                    id:2
-                },
-                {
-                    title:'FACEBOOK',
-                    icon: <ion-icon name="logo-facebook"></ion-icon>,
-                    id:3
-                },
-                {
-                    title:'WHATSAPP',
-                    icon: <ion-icon name="logo-whatsapp"></ion-icon>,
-                    id:4
-                },
-                {
-                    title:'YOUTUBE',
-                    icon: <ion-icon name="logo-youtube"></ion-icon>,
-                    id:5
-                },
-                {
-                    title:'INSTEGRAM',
-                    icon: <ion-icon name="logo-instagram"></ion-icon>,
-                    id:6
-                },
-                {
-                    title:'LINKEDIN',
-                    icon:<ion-icon name="logo-linkedin"></ion-icon>,
-                    id:7
-                },
-                {
-                    title:'EMAIL',
-                    icon:<ion-icon name="mail-outline"></ion-icon>,
-                    id:8
-                }
-                
-            ]
+            cards:CardList
         }
     }
+
+    cardRender(){
+
+        return this.state.cards.map(({title,icon,id,callback})=>(
+            <MenuItem key={id} title={title} icon={icon} onClick={callback} />
+        ))
+
+
+
+    }
+
+    
+
+    componentDidMount(){
+        fetch('http://localhost:3003/personalprofile')
+        .then(response => response.json())
+        .then((data)=>{
+           const userArray = JSON.parse(data.business_arrayofcards.replace('{','[').replace('}',']'));
+           const personalCards = CardList.filter(card=> userArray.includes(card.id.toString()))
+           
+           this.setState({cards:personalCards})
+        
+        })
+    }
+
 
     render(){
         return(
             <div className="directory-menu">
-            <div className="cover-image"></div>
-
-            {
-                this.state.buttons.map(({title,icon,id})=>(
-                    <MenuItem key={id} title={title} icon={icon}/>
-                ))
-            }
+                <div className="cover-image"></div>
+              {this.cardRender() }
+             
             </div>
         )
     }

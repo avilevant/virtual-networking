@@ -1,7 +1,6 @@
 import React from 'react';
 import DropSelect from "../../components/drop-select/drop-select";
 import './profile.scss';
-//import ProfileData from '../../components/profile-data/profile-data'
 import Checkbox from '../../components/checkbox/checkbox';
 import BusinessList from '../../components/business-list/business-list'
 
@@ -52,7 +51,8 @@ class Profile extends React.Component{
                 InstagramPage:this.state.InstagramPage,
                 youTube:this.state.youTube,
                 arrayOfCards:this.state.arrayOfCards,
-                mybizz:this.state.mybizz
+                mybizz:this.state.mybizz,
+                BizzNetArray:this.state.BizzNetArray
             })
 
         })
@@ -61,14 +61,16 @@ class Profile extends React.Component{
            
            console.log('this data has been sent: ', data)
             }
-        )
+        ).then(user=>{
+            console.log(user)
+        })
 
       
     
 
     this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:''})
     
-    this.props.isChecked = false
+    
 
     }
 

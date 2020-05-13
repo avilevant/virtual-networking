@@ -31,7 +31,8 @@ class SignIn extends React.Component{
         .then(data=> {
             
             if(data.id){
-                this.props.history.push('/'); 
+                this.props.history.push('/personalprofile'); 
+                console.log(data.id)
             } else (
                     prompt('user name or password incorrect')
                 )

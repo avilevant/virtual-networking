@@ -1,29 +1,14 @@
 import React,{ useState } from 'react';
-// import React from 'react';
 import MultiSelect from "react-multi-select-component";
-
-
+import {OccupationList} from '../occupationlist/occupationlist';
+import './drop-select.scss';
 
 
 
 const DropSelect = (props)=>{
 
 
-     const items  = [
-    
-                {
-                    label:"health",
-                    value:1
-                },
-                {
-                    label:"marketing",
-                    value:2
-                },
-                {
-                    label:"design",
-                    value:3
-                },
-            ]
+     const items  = OccupationList
 
 
             const [selected, setSelected] = useState([]);
@@ -31,16 +16,14 @@ const DropSelect = (props)=>{
             
               
             
-              const tempfunction=(x) =>{
+              const transferData=(x) =>{
                 const  { importData } = props;
 
                 const BizzNetMembers = x.map(x=>x.label)
                 importData(BizzNetMembers)
               }
 
-              // const BizzNetMember = selected.map(x=>x.label)
-              // console.log(BizzNetMember)
-              // props.importData(BizzNetMember);
+          
             
           
             
@@ -53,8 +36,9 @@ const DropSelect = (props)=>{
                 <MultiSelect
                   options={items}
                   value={selected}
-                  onChange={(x) => {tempfunction(x); setSelected(x)}}
+                  onChange={(x) => {transferData(x); setSelected(x)}}
                   labelledBy={"Select"}
+                  className='multiSelect'
                   
                   
                 />

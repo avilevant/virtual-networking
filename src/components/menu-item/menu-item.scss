@@ -2,6 +2,7 @@
         padding: 10px;
         margin: 10px;
         background-color: rgb(73, 71, 71);
+        border-radius: .25rem;
         &:hover {
             cursor: pointer;
             transform: translateY(-10px) scale(1.05);
@@ -24,6 +25,10 @@
             background-size: contain;
             //background-image: url('../../img/facebook.png');
             background-color: transparent;
+            @media(max-width: 800px) {
+                height: 50px;
+                width: 50px;
+            }
         }
         .item-title {
             color: whitesmoke;
@@ -32,6 +37,10 @@
             font-weight: 600;
             background-color: transparent;
             margin-top: 15px;
+            @media(max-width: 800px) {
+                margin: 0px;
+                font-size: 0;
+            }
         }
     }
     
@@ -45,4 +54,8 @@
         background-size: contain;
         //background-image: url('../../img/facebook.png');
         background-color: transparent;
+        @media(max-width: 800px) {
+            height: 50px;
+            width: 50px;
+        }
     }

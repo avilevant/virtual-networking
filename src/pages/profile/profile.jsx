@@ -2,7 +2,9 @@ import React from 'react';
 import DropSelect from "../../components/drop-select/drop-select";
 import './profile.scss';
 import Checkbox from '../../components/checkbox/checkbox';
-import BusinessList from '../../components/business-list/business-list'
+import BusinessList from '../../components/business-list/business-list';
+import {OccupationList} from '../../components/occupationlist/occupationlist';
+import PicUpload from '../../components/picupload/picupload';
 
 const numberOfCards = 8
 
@@ -22,6 +24,7 @@ class Profile extends React.Component{
             faceBookPage:'',
             InstagramPage:'',
             youTube:'',
+            linkedIn:'',
             arrayOfCards:[],
             mybizz:'',
             BizzNetArray:[],
@@ -50,6 +53,7 @@ class Profile extends React.Component{
                 faceBookPage:this.state.faceBookPage,
                 InstagramPage:this.state.InstagramPage,
                 youTube:this.state.youTube,
+                linkedIn: this.state.linkedIn,
                 arrayOfCards:this.state.arrayOfCards,
                 mybizz:this.state.mybizz,
                 BizzNetArray:this.state.BizzNetArray
@@ -58,7 +62,7 @@ class Profile extends React.Component{
         })
         .then(response =>response.json())
         .then(data=> {
-           
+            this.props.history.push('/personalprofile');
            console.log('this data has been sent: ', data)
             }
         ).then(user=>{
@@ -80,6 +84,23 @@ class Profile extends React.Component{
         this.setState({[name]:value})
        
     }
+
+    chooseMyBiz=()=>{
+        const tempArray =[]
+        return (
+
+        <select name="mybizz" onChange={this.handleChange} className='chose-my-business' >
+        <option className='option'>Choose... </option>
+        
+            {OccupationList.forEach(el=>tempArray.push(el.label))}
+               
+            {tempArray.map(label=>  <option  value={label}>{label}</option>)}
+       
+        </select>)
+    }
+
+    
+
 
     // BizzNetMember: array of strings, each is a business label
     FuncBizzNetArray = (BizzNetMember)=>{
@@ -160,11 +181,14 @@ class Profile extends React.Component{
     
 render(){
  return(
+    <div>
+    <h1 className='username'>Hi user, Build Your Business Profile{this.state.name}</h1>
  <form onSubmit={this.handleSubmit}>
-    <div className="container">
+   
                  
-        <div className='profile'>
-        <h1 className="header" >Build Your Business Profile</h1>
+    <div className='profile'>
+        <div className='first-col'>
+        <h1 className="header" >Enter your business information</h1>
      
         <div>
         <i className="fa fa-user icon"></i> 
@@ -205,37 +229,56 @@ render(){
         <i className="fa fa-youtube icon icon-1"></i> 
         <input className='input' name='youTube' type='text' value={this.state.youTube} placeholder='YouTube Channel link' onChange={this.handleChange}  ></input>
         </div>
-      
 
-           <div className='chose-my-business'>
+        <div>
+        <i className="fa fa-linkedin icon icon-1"></i> 
+        <input className='input' name='linkedIn' type='text' value={this.state.linkedIn} placeholder='linkedIn Profile link' onChange={this.handleChange}  ></input>
+        </div>
+        </div>
+      
+        <div className='second-col'>
+        
+           <div >
 
            <h1 className="header" >choose your field of business</h1>
            
-           <select name="mybizz" onChange={this.handleChange} >
-           <option value="medicine">medicine</option>
-           <option value="consulting">consulting</option>
-           <option value="design" >design</option>
-           <option value="sales">sales</option>
-           </select>
+           
+           {this.chooseMyBiz()}
            </div>
 
            <div>
            <DropSelect  importData={this.FuncBizzNetArray}/>
            </div>
 
+           <div>
+           <h1>add your background picture</h1>
+           <PicUpload/>
+           </div>
+
+           <div>
+           <h1>add your logo/profile pic</h1>
+           <PicUpload/>
+           </div>
+
+           </div>
+
+           <div className='last-col'>
+          
+
            <div className='choseCards'>
            <h1 className="header" >choose your cards for display</h1>
            {this.createCheckboxes()}
            </div>
+           </div>
 
-
+        </div>
       
            <input type='submit' value='submit Form' className='button'></input>
-           </div>
-           </div>
+           
+           
            </form>
 
-
+           </div>
  
 
 

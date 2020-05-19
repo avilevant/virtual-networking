@@ -1,12 +1,30 @@
-.directory-menu {
-    display: grid;
-    grid-template-rows: 70vh 30vh;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    // grid-template-columns: repeat(8, 1fr);
-    .cover-image {
+    .button-menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-rows: 30vh;
+        @media(max-width: 600px) {
+            grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+        // @media(max-width: 800px) {
+        //     grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+        // }
+    }
+    
+    .bigImg {
+        margin: 0px 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         background-image: url('../../img/3093524.jpg');
         background-size: cover;
-        grid-column: 1/9;
-        margin: 10px;
+        // object-fit: cover;
+        // align-items: center;
+        grid-template-rows: 70vh;
+        .bizzName {
+            padding: 30px;
+        }
+        @media(max-width: 800px) {
+            grid-template-rows: 50vh;
+            margin-bottom: 5vh;
+        }
     }
-}

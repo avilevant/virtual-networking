@@ -1,7 +1,9 @@
 import React from 'react';
 import './sign-in.scss';
 import {withRouter} from 'react-router-dom';
-import signinPic from '../../img/3094352.jpg'
+import signinPic from '../../img/3094352.jpg';
+import Directory from '../directory-menu/directory';
+
   
 
 class SignIn extends React.Component{
@@ -14,7 +16,12 @@ class SignIn extends React.Component{
     } 
 } 
 
-
+    returnId(id){
+      return(
+          <Directory userId={id}/>
+      )
+        
+    }
      
     handleSubmit = (event) => {
         event.preventDefault();
@@ -32,7 +39,7 @@ class SignIn extends React.Component{
             
             if(data.id){
                 this.props.history.push('/personalprofile'); 
-                console.log(data.id)
+                this.returnId(data.id)
             } else (
                     prompt('user name or password incorrect')
                 )
@@ -55,10 +62,12 @@ class SignIn extends React.Component{
 
     render(){
         return(
-             
-        <div className="container">
+            <div>
+            
+            <div className="container">
                  
             <div className='sign-in'>
+           
             <h1 className="header" >Sign In</h1>
             <form onSubmit={this.handleSubmit}>
             <div>
@@ -76,6 +85,8 @@ class SignIn extends React.Component{
             </div>
             <img src={signinPic} className="img" alt="signin"></img> 
         </div>
+            </div>
+       
          
         )
     }

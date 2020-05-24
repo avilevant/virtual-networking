@@ -2,9 +2,25 @@ import React from 'react';
 import {isMobile} from 'react-device-detect';
 // import PopupMessage from '../popup/popup';
 // import Directory from '../directory-menu/directory';
+let n=5
+
+const PopMessage = (props,n ) => {
+    console.log(n)
+    if(n===1){
+
+        return <h1>{props.message1}</h1>
+    
+    }else if(n===2){
+        return <h1>{props.message2}</h1>
+    }else if(n===3){
+        return <h1>{props.message3}</h1>
+    }else
+    return <h1>say yeh</h1>
+    
+}
 
 
-const CreateCartList =(props) => {
+const CreateCardList =(props) => {
 
     
                 
@@ -14,11 +30,18 @@ const CreateCartList =(props) => {
                    icon:<ion-icon name="call-outline"></ion-icon>,
                    id:1,
                    callback: ()=> {
-                    if (isMobile) {
-                        return <div> call made on mobile</div>
-                    }
+                    // if (isMobile) {
+                    //     return <div> call made on mobile</div>
+                    // }
                         //  return <div>hello</div>
+
                         console.log('call clicked')
+                        
+                                
+                            
+                            PopMessage(n)
+                            
+                        
                         // return <Directory render={PopupMessage}/> 
                         
                         // return <PopupMessage/>
@@ -29,10 +52,13 @@ const CreateCartList =(props) => {
                    icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
                    id:2,
                    callback: ()=>{ 
-                    if (isMobile) {
-                        return <div> call made on mobile</div>
-                }
-                        console.log('sms clicked')}
+                    const n=2
+                       PopMessage(n)}
+                //     if (isMobile) {
+                //         return <div> call made on mobile</div>
+                // }
+                //         console.log('sms clicked')
+                //         return <h1>say hello to my little friend</h1>}
                },
                {
                    title:'WHATSAPP',
@@ -41,7 +67,8 @@ const CreateCartList =(props) => {
                     if (isMobile) {
                         return <div> call made on mobile</div>
                 }
-                        console.log('whatsApp clicked')},
+                const n=3
+                     PopMessage(n)},
                    id:3
                },
                {
@@ -97,4 +124,4 @@ const CreateCartList =(props) => {
 
 
 
-export default CreateCartList;
+export {CreateCardList, PopMessage};

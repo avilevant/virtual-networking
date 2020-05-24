@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 
 const PopupMessage = () =>{
     return <Popup   position='center center'>
-    <div>call me maybe</div>
+    <h1>call me maybe</h1>
     </Popup>
 }
 

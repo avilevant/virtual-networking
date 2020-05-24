@@ -1,30 +1,73 @@
-    .button-menu {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-template-rows: 30vh;
-        @media(max-width: 600px) {
-            grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        }
-        // @media(max-width: 800px) {
-        //     grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
-        // }
-    }
-    
-    .bigImg {
-        margin: 0px 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        background-image: url('../../img/3093524.jpg');
-        background-size: cover;
-        // object-fit: cover;
-        // align-items: center;
-        grid-template-rows: 70vh;
-        .bizzName {
-            padding: 30px;
-        }
-        @media(max-width: 800px) {
-            grid-template-rows: 50vh;
-            margin-bottom: 5vh;
-        }
-    }
+   * {
+       padding: 0;
+       margin: 0;
+   }
+   
+   .button-menu {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+       grid-template-rows: 30vh;
+       position: relative;
+       top: 9rem;
+       @media(max-width: 600px) {
+           grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+           grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+       }
+   }
+   
+   .bigImg {
+       margin: 0px 10px;
+       display: grid;
+       border-top: 5px solid black;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+       height: 70vh;
+       width: 100%;
+       position: absolute;
+       object-fit: cover;
+       // align-items: center;
+       grid-template-rows: 70vh;
+   }
+   
+   .bizzName {
+       font-size: 50px;
+       text-align: center;
+       // display: inline-block;
+       position: relative;
+       @media(max-width: 600px) {
+           font-size: 15px;
+       }
+   }
+   
+   .popMessage {
+       position: relative;
+       top: 50%;
+       left: 50%;
+       z-index: 100;
+       color: white;
+   }
+   
+   .smallImgFig {
+       width: 15rem;
+       height: 15rem;
+       background-color: whitesmoke;
+       border: 2px solid black;
+       position: relative;
+       overflow: hidden;
+       border-radius: 50%;
+       .smallImg {
+           object-fit: cover;
+           width: 15rem;
+           height: 15rem;
+           position: relative;
+           z-index: 10;
+       }
+       @media(max-width: 600px) {
+           width: 8rem;
+           height: 8rem;
+       }
+   }
+   
+   @media(max-width: 800px) {
+       grid-template-rows: 45vh;
+       margin-bottom: 8vh;
+   }

@@ -5,12 +5,14 @@ import HomePage from './pages/homepage/homepage.component';
 import SignUpPage from './pages/signup-page/signup-page';
 import SignInPage from './pages/signin-page/signin-page';
 import Profile from './pages/profile/profile';
-import PersonalProfile from './pages/personal-profile/personal-profile'
+import PersonalProfile from './pages/personal-profile/personal-profile';
+import BurgerMenu from './components/burger-menu/burger-menu';
 
 
 function App() {
   return (
     <div>
+    <BurgerMenu/>
     <Switch>
     <Route exact path='/' component ={HomePage}/>
     <Route exact path='/personalprofile' component ={PersonalProfile}/>

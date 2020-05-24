@@ -1,7 +1,8 @@
 import React from 'react';
 import './directory.scss';
 import MenuItem from '../menu-item/menu-item';
-import CreateCardList from '../card-list/card-list';
+import {CreateCardList, PopMessage} from '../card-list/card-list';
+
 
 
 
@@ -11,7 +12,7 @@ class Directory extends React.Component{
     constructor(props){
         super(props);
 
-        console.log(this.props)
+        
 
         this.state = {
             cards: null,
@@ -28,21 +29,35 @@ class Directory extends React.Component{
         }
     }
 
+    
+    insertImg(){
+        const bigImg = require('../../img/3093524.jpg')
+           return <img src={bigImg} alt='user data' className='bigImg'  />
+    }
 
-    // insertImg(){
-    //     const bigImg = require('../../img/3093524.jpg')
-    //        return <img src={bigImg} alt='user data' className='bigImg'  />
-    // }
+    insertImg1(){
+        const smallImg = require('../../img/IMG_0087_pp.jpg')
+           return <img src={smallImg} alt='user data' className='smallImg'  />
+    }
+
+    cardPop(){
+       return <PopMessage 
+       message1='say hello'
+       
+       />
+    }
      
-    
-    
+        
     cardRender(){
         
-         
-          if (this.state.cards) return(
-                this.state.cards.map(({title,icon,id,callback})=>(
-                <MenuItem key={id} title={title} icon={icon} data={callback}  />
-            ))
+          if (this.state.cards)
+          
+          
+          return(
+             
+              this.state.cards.map(({title,icon,id,callback})=>              
+              (<MenuItem key={id} title={title} icon={icon} data={callback} />))
+               
         )
         else return <h1> loading</h1>
 
@@ -68,7 +83,7 @@ class Directory extends React.Component{
                facebook: data.business_facebook,
                InstagramPage:data.business_instagram,
                youtube: data.business_youtube,
-               linkedIn: data.business.linkedIn
+               linkedIn: data.business_linkedIn
            }
            const personalCards = CreateCardList(propsForCardList).filter(card=> userArray.includes(card.id.toString()));
            console.log(personalCards)
@@ -83,7 +98,7 @@ class Directory extends React.Component{
            faceBookPage:data.business_facebook,
            InstagramPage:data.business_instagram,
            youTube:data.business_youtube,
-           linkedIn: data.business.linkedIn
+           linkedIn: data.business_linkedIn
         })
 
            console.log(this.state)
@@ -91,24 +106,43 @@ class Directory extends React.Component{
         })
     }
 
+    
 
     render(props){
+
+        
+
         return(
             <div>
-           
             
-            <div className='bigImg'>
-            <h1 className='bizzName'>{this.state.name}</h1>
-            </div>
            
+            <div className='bigImg'>
+            {this.insertImg()}
+            <div className='popMessage'>
+            
+            {this.cardPop()}
+            </div>
+            </div>
+            
+            
+           <div>
+           <span className='bizzName'>
+                <h1>{this.state.name}</h1> 
+                </span>
+                
+                <figure className='smallImgFig'>
+                {this.insertImg1()}
+                </figure>
+           </div>
+            
+            
+          
             <div className="button-menu">
                 
               {this.cardRender() }
-             
-            </div>
-            </div>
-        )
-    }
+             </div>
+             </div>
+        )}
 
 }
 

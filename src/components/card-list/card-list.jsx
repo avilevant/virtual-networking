@@ -1,27 +1,12 @@
 import React from 'react';
 import {isMobile} from 'react-device-detect';
-// import PopupMessage from '../popup/popup';
+
 // import Directory from '../directory-menu/directory';
-let n=5
 
-const PopMessage = (props,n ) => {
-    console.log(n)
-    if(n===1){
-
-        return <h1>{props.message1}</h1>
-    
-    }else if(n===2){
-        return <h1>{props.message2}</h1>
-    }else if(n===3){
-        return <h1>{props.message3}</h1>
-    }else
-    return <h1>say yeh</h1>
-    
-}
 
 
 const CreateCardList =(props) => {
-
+// console.log(props.phone)
     
                 
                const cardList = [
@@ -34,12 +19,12 @@ const CreateCardList =(props) => {
                     //     return <div> call made on mobile</div>
                     // }
                         //  return <div>hello</div>
-
+                        console.log(props.phone)
                         console.log('call clicked')
-                        
+                        alert( `our number is ${props.phone}, please call us`)
                                 
                             
-                            PopMessage(n)
+                            // PopMessage(n)
                             
                         
                         // return <Directory render={PopupMessage}/> 
@@ -52,8 +37,7 @@ const CreateCardList =(props) => {
                    icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
                    id:2,
                    callback: ()=>{ 
-                    const n=2
-                       PopMessage(n)}
+                    alert('this option is available on mobile only')}
                 //     if (isMobile) {
                 //         return <div> call made on mobile</div>
                 // }
@@ -67,8 +51,7 @@ const CreateCardList =(props) => {
                     if (isMobile) {
                         return <div> call made on mobile</div>
                 }
-                const n=3
-                     PopMessage(n)},
+                alert('this option is available on mobile only')},
                    id:3
                },
                {
@@ -80,7 +63,7 @@ const CreateCardList =(props) => {
                {
                    title:'LOCATION',
                    icon:<ion-icon name="location-outline"></ion-icon>,
-                   callback: () =>window.open("https://www.w3schools.com"),
+                   callback: () =>window.open("http://localhost:3000/map"),
                    id:5
                },
                {
@@ -124,4 +107,4 @@ const CreateCardList =(props) => {
 
 
 
-export {CreateCardList, PopMessage};
+export default CreateCardList;

@@ -11,7 +11,7 @@ const BurgerMenu = ()=>{
           <a id="about" className="menu-item" href="/signin">Sign In</a>
           <a id="contact" className="menu-item" href="/signup">Register</a>
           <a id="contact" className="menu-item" href="/profile">Edit Profile</a>
-          <a id="contact" className="menu-item" href="/contact">Sign Out</a>
+          <a id="contact" className="menu-item" href="/">Sign Out</a>
          
         </Menu>
       );

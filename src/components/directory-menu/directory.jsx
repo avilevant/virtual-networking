@@ -1,7 +1,7 @@
 import React from 'react';
 import './directory.scss';
 import MenuItem from '../menu-item/menu-item';
-import {CreateCardList, PopMessage} from '../card-list/card-list';
+import CreateCardList from '../card-list/card-list';
 
 
 
@@ -40,12 +40,7 @@ class Directory extends React.Component{
            return <img src={smallImg} alt='user data' className='smallImg'  />
     }
 
-    cardPop(){
-       return <PopMessage 
-       message1='say hello'
-       
-       />
-    }
+   
      
         
     cardRender(){
@@ -118,10 +113,7 @@ class Directory extends React.Component{
            
             <div className='bigImg'>
             {this.insertImg()}
-            <div className='popMessage'>
             
-            {this.cardPop()}
-            </div>
             </div>
             
             

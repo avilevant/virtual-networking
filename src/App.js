@@ -7,6 +7,8 @@ import SignInPage from './pages/signin-page/signin-page';
 import Profile from './pages/profile/profile';
 import PersonalProfile from './pages/personal-profile/personal-profile';
 import BurgerMenu from './components/burger-menu/burger-menu';
+import Map from './components/map/map';
+import UploadToFirebase from './components/photo-upload/photo-upload'
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
     <Route path='/signup' component ={SignUpPage}/>
     <Route path='/profile' component ={Profile}/>
     <Route path='/signin' component ={SignInPage}/>
+    <Route path='/map' component ={Map}/>
+    <Route path='/UploadToFirebase' component ={UploadToFirebase}/>
     </Switch>
     </div>
   );

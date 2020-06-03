@@ -4,7 +4,9 @@ import './profile.scss';
 import Checkbox from '../../components/checkbox/checkbox';
 import BusinessList from '../../components/business-list/business-list';
 import {OccupationList} from '../../components/occupationlist/occupationlist';
-import PicUpload from '../../components/picupload/picupload';
+import {withRouter} from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 
 const numberOfCards = 8
 
@@ -14,7 +16,7 @@ class Profile extends React.Component{
 
     constructor(props){
         super(props)
-        console.log(props)
+
         this.state={
             name:'',
             location:'',
@@ -28,22 +30,30 @@ class Profile extends React.Component{
             arrayOfCards:[],
             mybizz:'',
             BizzNetArray:[],
-            list:BusinessList
-            
+            list:BusinessList,
+            U_name:''
         }
-
-       
+        
+        
+        
     }
-
+        
     
+    componentDidMount(){
+        
+        const C_name =  Cookies.get('C_name')
+        console.log(C_name)
 
+        this.setState({U_name:C_name})
+    }
 
     handleSubmit = (event,props) => {
         event.preventDefault();
-
+        const token =  Cookies.get('token')
+        console.log(token)
         fetch('http://localhost:3003/profile', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+ token },
             body: JSON.stringify({
                 email:this.state.email,
                 name:this.state.name,
@@ -62,8 +72,9 @@ class Profile extends React.Component{
         })
         .then(response =>response.json())
         .then(data=> {
-            this.props.history.push('/personalprofile');
-           console.log('this data has been sent: ', data)
+            console.log(data)
+            this.props.history.push('/uploadImg');
+        //    console.log('this data has been sent: ', data)
             }
         ).then(user=>{
             console.log(user)
@@ -182,7 +193,7 @@ class Profile extends React.Component{
 render(){
  return(
     <div>
-    <h1 className='username'>Hi user, Build Your Business Profile{this.state.name}</h1>
+    <h1 className='username'>Hi {this.state.U_name}, Build Your Business Profile</h1>
  <form onSubmit={this.handleSubmit}>
    
                  
@@ -197,7 +208,7 @@ render(){
 
         <div>
         <i className="fa fa-phone icon"></i> 
-        <input className='input' name='phone' type='text' value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
+        <input className='input' name='phone' type='tel' pattern="^\d{10}$" value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
         </div>
         
         <div>
@@ -250,15 +261,7 @@ render(){
            <DropSelect  importData={this.FuncBizzNetArray}/>
            </div>
 
-           <div>
-           <h1>add your background picture</h1>
-           <PicUpload/>
-           </div>
-
-           <div>
-           <h1>add your logo/profile pic</h1>
-           <PicUpload/>
-           </div>
+          
 
            </div>
 
@@ -332,4 +335,4 @@ render(){
 }
 }
 
-export default Profile;
+export default withRouter(Profile);

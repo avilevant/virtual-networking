@@ -1,7 +1,9 @@
 import React from 'react';
 import './sign-up.scss';
 import {withRouter} from 'react-router-dom';
-import signupPic from '../../img/2853458.jpg'
+import signupPic from '../../img/2853458.jpg';
+import Cookies from 'js-cookie';
+
 
 class SignUp extends React.Component{
     constructor(){
@@ -23,6 +25,10 @@ class SignUp extends React.Component{
     handleSubmit = (event) => {
         event.preventDefault();
         const newUser = this.state
+    
+    if(newUser.password.length<8){
+        alert('password must be 8 characters or more')
+    }
 
      if(newUser.password === newUser.validPassword){
         
@@ -42,6 +48,9 @@ class SignUp extends React.Component{
             if(data==='23505'){
                 prompt('email already exists')
             }else{
+                Cookies.set('token',data.token)
+                Cookies.set('C_name',data.user.name)
+                Cookies.set('C_id',data.user.id)
                 this.props.history.push('/profile');
                 console.log(newUser)
             }

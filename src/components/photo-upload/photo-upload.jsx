@@ -1,23 +1,46 @@
 import React, {useState} from 'react';
 import {storage} from '../../firebase/firebase';
+import './photo-upload.scss';
+import {withRouter} from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+
 
 const UploadToFirebase =()=>{
+    
     const [image,setImage]=useState(null);
-    const [url,setUrl]=useState('');
+    const [image2,setImage2]=useState(null);
+    const [url1,setUrl1]=useState('');
+    const [url2,setUrl2]=useState('');
     const [progress, setProgress] = useState(0)
+    const token =  Cookies.get('token')
+    console.log(token)
 
     const handleChange = event=>{
         if(event.target.files[0]){
-            setImage(event.target.files[0])
+            //update state for both images
+            image===null?setImage(event.target.files[0]) : setImage2(event.target.files[0])
+            
+            //preview before upload
             const imagePreview = new FileReader()
-            imagePreview.addEventListener("load",()=>setUrl(imagePreview.result),false)
+
+            if(event.target.name === 'background'){
+                imagePreview.addEventListener("load",()=>setUrl1(imagePreview.result),false)
+            }else{
+                imagePreview.addEventListener("load",()=>setUrl2(imagePreview.result),false)
+            }
             imagePreview.readAsDataURL(event.target.files[0])
             
         }
     }
+     
+    const files =[image,image2]
+    
 
     const handleUpload = () =>{
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        files.forEach(file=>{
+            const uploadTask = storage.ref(`images/${file.name}`).put(file);
+
         uploadTask.on(
             "state_changed",
             snapshot => {
@@ -30,38 +53,42 @@ const UploadToFirebase =()=>{
             ()=>{
                 storage
                     .ref('images')
-                    .child(image.name)
+                    .child(file.name)
                     .getDownloadURL()
                     .then(url=>{
-                        console.log(url)
-                        setUrl(url)
+                        url1===''?setUrl1(url):setUrl2(url)
+                        
+                        // setImage(null)
                     })
+                    .then( fetch('http://localhost:3003/uploadImg', {
+                        method: 'post',
+                        headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
+                        body: JSON.stringify({
+                            url1:url1,
+                            url2:url2
+                        })
+            
+                    })
+                    .then(response =>response.json())
+                    .then(data=> {
+                        
+                        
+                           
+                            console.log(data)
+                        
+                        }
+                    )
+            )
             }
         )
-
-        // fetch('http://localhost:3003/signin', {
-        //     method: 'post',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify({
-        //         email:this.state.email,
-        //         password:this.state.password
-        //     })
-
-        // })
-        // .then(response =>response.json())
-        // .then(data=> {
-            
-        //     if(data.id){
-        //         this.props.history.push('/personalprofile'); 
-        //         this.returnId(data.id)
-        //     } else (
-        //             prompt('user name or password incorrect')
-        //         )
-        //     }
-        // )
+        })
+        
+      
 
     }
-    console.log("image: ", image)
+    
+    
+  
 
 
     return(
@@ -69,25 +96,31 @@ const UploadToFirebase =()=>{
         <progress value={progress} max="100"/>
         <br/>
         <br/>
-        <input type="file" onChange={handleChange}/>
+        <input type="file" name='background' onChange={handleChange}/>
         {/*<button onClick={handleUpload}>upload</button>*/}
         <br/>
         <br/>
-        <img src={url} alt='imagePreview'/>
-       
+        
+        
+        <img src={url1} alt='imagePreview' className='img'/>
+      
         <br/>
         <br/>
+      
         <br/>
         <br/>
 
-        <progress value={progress} max="100"/>
+       
         <br/>
         <br/>
-        <input type="file" onChange={handleChange}/>
-          {/*<button onClick={handleUpload}>upload</button>*/}
+        <input type="file" name='smallImg' onChange={handleChange}/>
+        
         <br/>
         <br/>
-        <img src={url} alt='imagePreview'/>
+        
+        <img src={url2} alt='imagePreview' className='img' />
+        
+        
         <br/>
         <br/>
         <br/>
@@ -98,4 +131,4 @@ const UploadToFirebase =()=>{
 
 }
 
-export default UploadToFirebase;
+export default withRouter(UploadToFirebase);

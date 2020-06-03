@@ -15,21 +15,14 @@ const CreateCardList =(props) => {
                    icon:<ion-icon name="call-outline"></ion-icon>,
                    id:1,
                    callback: ()=> {
-                    // if (isMobile) {
-                    //     return <div> call made on mobile</div>
-                    // }
-                        //  return <div>hello</div>
+                    if (isMobile) {
+                        window.location.href = `tel:+972${props.phone}`
+                    }
+                       
                         console.log(props.phone)
                         console.log('call clicked')
                         alert( `our number is ${props.phone}, please call us`)
-                                
-                            
-                            // PopMessage(n)
-                            
-                        
-                        // return <Directory render={PopupMessage}/> 
-                        
-                        // return <PopupMessage/>
+                     
             }
                },
                {
@@ -37,7 +30,13 @@ const CreateCardList =(props) => {
                    icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
                    id:2,
                    callback: ()=>{ 
-                    alert('this option is available on mobile only')}
+                    if (isMobile) {
+                        window.location.href = `sms:+972${props.phone}`
+                    }else{
+
+                        alert('this option is available on mobile only')}
+                    }
+
                 //     if (isMobile) {
                 //         return <div> call made on mobile</div>
                 // }
@@ -49,9 +48,12 @@ const CreateCardList =(props) => {
                    icon: <ion-icon name="logo-whatsapp"></ion-icon>,
                    callback: () =>{ 
                     if (isMobile) {
-                        return <div> call made on mobile</div>
+                        window.open(`https://wa.me/${props.phone}`)
+                }else{
+
+                    alert('this option is available on mobile only')
                 }
-                alert('this option is available on mobile only')},
+            },
                    id:3
                },
                {
@@ -63,7 +65,16 @@ const CreateCardList =(props) => {
                {
                    title:'LOCATION',
                    icon:<ion-icon name="location-outline"></ion-icon>,
-                   callback: () =>window.open("http://localhost:3000/map"),
+                //    callback: () =>window.open("http://localhost:3000/map"),
+                // callback: () =>window.open(`http://google.com/maps/search/?api=1&${encoded}`),
+                callback: () =>{
+                    const encoded = encodeURIComponent(props.location)
+                    if(isMobile){
+                          window.open(`http://waze.com/ul?q=${encoded}&z=17`)
+                        }
+                    
+                    window.open(`http://google.com/maps/search/?api=1&query=${encoded}`)},
+                //     window.open(`http://waze.com/ul?q=${encoded}&z=17`)},
                    id:5
                },
                {
@@ -75,7 +86,7 @@ const CreateCardList =(props) => {
                {
                    title:'WEBSITE',
                    icon: <ion-icon name="globe-outline"></ion-icon>,
-                   callback: () =>window.open(`https://${props.website}`),
+                   callback: () =>window.open(props.website),
                    id:7
                },
                {
@@ -95,7 +106,14 @@ const CreateCardList =(props) => {
                    icon:<ion-icon name="logo-linkedin"></ion-icon>,
                    callback: () =>window.open(props.linkedIn),
                    id:10
-               }  
+               },
+               {
+                title:'SHARE',
+                icon:<ion-icon name="share-social-outline"></ion-icon>,
+                callback: () =>navigator.share(props.website) ,
+                //change later to personalprofile
+                id:11
+            }    
            ];
        
           return cardList;

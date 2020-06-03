@@ -2,7 +2,7 @@ import React from 'react';
 import './sign-in.scss';
 import {withRouter} from 'react-router-dom';
 import signinPic from '../../img/3094352.jpg';
-import Directory from '../directory-menu/directory';
+import Cookies from 'js-cookie';
 
   
 
@@ -16,12 +16,12 @@ class SignIn extends React.Component{
     } 
 } 
 
-    returnId(id){
-      return(
-          <Directory userId={id}/>
-      )
+    // returnId(id){
+    //   return(
+    //       <Directory userId={id}/>
+    //   )
         
-    }
+    // }
      
     handleSubmit = (event) => {
         event.preventDefault();
@@ -36,10 +36,16 @@ class SignIn extends React.Component{
         })
         .then(response =>response.json())
         .then(data=> {
-            
-            if(data.id){
-                this.props.history.push('/personalprofile'); 
-                this.returnId(data.id)
+            console.log(data)
+            console.log(data.user.name)
+            console.log(data.user.id)
+            if(data){
+                Cookies.set('token',data.token)
+                Cookies.set('C_name',data.user.name)
+                Cookies.set('C_id',data.user.id)
+                
+                this.props.history.push('/personalprofile/:id'); 
+                // this.returnId(data.id)
             } else (
                     prompt('user name or password incorrect')
                 )

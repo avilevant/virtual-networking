@@ -7,8 +7,8 @@ import SignInPage from './pages/signin-page/signin-page';
 import Profile from './pages/profile/profile';
 import PersonalProfile from './pages/personal-profile/personal-profile';
 import BurgerMenu from './components/burger-menu/burger-menu';
-import Map from './components/map/map';
 import UploadToFirebase from './components/photo-upload/photo-upload'
+
 
 
 function App() {
@@ -17,12 +17,11 @@ function App() {
     <BurgerMenu/>
     <Switch>
     <Route exact path='/' component ={HomePage}/>
-    <Route exact path='/personalprofile' component ={PersonalProfile}/>
+    <Route exact path='/personalprofile/:id' component ={PersonalProfile}/>
     <Route path='/signup' component ={SignUpPage}/>
     <Route path='/profile' component ={Profile}/>
     <Route path='/signin' component ={SignInPage}/>
-    <Route path='/map' component ={Map}/>
-    <Route path='/UploadToFirebase' component ={UploadToFirebase}/>
+    <Route path='/uploadImg' component ={UploadToFirebase}/>
     </Switch>
     </div>
   );

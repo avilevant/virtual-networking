@@ -3,16 +3,32 @@ import {GoogleMap, withScriptjs, withGoogleMap,Marker } from 'react-google-maps'
 import Geocode from 'react-geocode';
 
 
+
 Geocode.setApiKey("AIzaSyA3U3NI16Po7UyNTxwFeA9da4UdxDNt8iU");
 Geocode.setLanguage("iw");
 Geocode.enableDebug();
 
-Geocode.fromAddress(" המסגר 4 תל אביב ").then(
+
+const Geo = (props) =>{
+    console.log(props.location)
+    return props.location
+    
+}
+
+
+
+
+Geocode.fromAddress("רחוב הארבעה תל אביב").then(
+//getting weird data
+    // Geocode.fromAddress(Geo).then(
     response=>{
-        const {lat,lng} = response.results[0].geometry.location;
-        BaseMap(lat,lng)
-        
-        console.log(lat,lng)
+       
+        // const {lat,lng} = response.results[0].geometry.location;
+        // BaseMap(lat,lng)
+        const BaseMapData = response.results[0].geometry.location;
+        console.log(BaseMapData)
+        BaseMap(BaseMapData)
+ 
     },error=>{
         console.error(error)
     }
@@ -21,15 +37,15 @@ Geocode.fromAddress(" המסגר 4 תל אביב ").then(
 
 
 
-function BaseMap(lat,lng){
-    console.log(lat,lng)
+function BaseMap(props){
+    console.log(props)
     return(
         <div>
         <GoogleMap  defaultZoom ={16} 
-       
-        // defaultCenter={{lat:lat,lng:lng}}
-        defaultCenter={{lat:32.0601128,lng:34.7846326}}/>
         
+        // defaultCenter={props}/>
+        defaultCenter={{lat:32.0601128,lng:34.7846326}}/>
+
         <Marker position={{lat:32.0601128,lng:34.7846326}} title="the place" />
         </div>
       
@@ -48,4 +64,4 @@ function Map(){
         </div>
     )
 }
- export default Map;
+ export  {Map, Geo};

@@ -31,7 +31,7 @@ const DropSelect = (props)=>{
  
             return (
               <div>
-                <h1>build your network!</h1>
+               
               
                 <MultiSelect
                   options={items}

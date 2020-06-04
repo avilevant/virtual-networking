@@ -7,27 +7,56 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 20px;
-    @media(max-width: 800px) {}
+    @media(max-width: 800px) {
+        margin: 4% auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40vh;
+        width: 90vw;
+        height: 85vh;
+    }
     .img {
-        width: 30vw;
+        height: 60%;
+        // width: 20vw;
         display: flex;
         margin: auto;
+        @media(max-width: 800px) {
+            width: 60vw;
+        }
+        @media(max-width: 400px) {
+            padding-top: 50px;
+        }
     }
     .sign-in {
         margin: auto;
         padding: 50px;
+        @media(max-width: 800px) {
+            padding: 30px;
+            margin-top: 60px;
+        }
         .header {
             margin-bottom: 40px;
+            @media(max-width: 800px) {
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
         }
         .input {
             border: none;
             border-bottom: 2px solid black;
             margin-bottom: 35px;
+            @media(max-width: 800px) {
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
         }
         .icon {
             padding: 1px;
             min-width: 40px;
             background-color: transparent;
+            @media(max-width: 800px) {
+                width: 20px;
+                height: 20px;
+            }
         }
         .button {
             background-color: #00DFC0;
@@ -50,6 +79,10 @@
             &:active {
                 position: relative;
                 top: 3px;
+            }
+            @media(max-width: 800px) {
+                margin-top: 40px;
+                // font-size: 10px;
             }
         }
     }

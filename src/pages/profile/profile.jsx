@@ -6,6 +6,11 @@ import BusinessList from '../../components/business-list/business-list';
 import {OccupationList} from '../../components/occupationlist/occupationlist';
 import {withRouter} from 'react-router-dom';
 import Cookies from 'js-cookie';
+import BurgerMenu from '../../components/burger-menu/burger-menu';
+import { Steps,Panel,ButtonGroup,Button } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
+import UploadToFirebase from '../../components/photo-upload/photo-upload'
+
 
 
 const numberOfCards = 8
@@ -31,27 +36,31 @@ class Profile extends React.Component{
             mybizz:'',
             BizzNetArray:[],
             list:BusinessList,
-            U_name:''
+            U_name:'',
+            step:0
         }
         
         
         
     }
+
+
+    
         
     
     componentDidMount(){
         
         const C_name =  Cookies.get('C_name')
         console.log(C_name)
-
         this.setState({U_name:C_name})
+        
     }
 
     handleSubmit = (event,props) => {
         event.preventDefault();
         const token =  Cookies.get('token')
         console.log(token)
-        fetch('http://localhost:3003/profile', {
+        fetch('https://afternoon-thicket-58274.herokuapp.com/profile', {
             method: 'post',
             headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+ token },
             body: JSON.stringify({
@@ -74,7 +83,6 @@ class Profile extends React.Component{
         .then(data=> {
             console.log(data)
             this.props.history.push('/uploadImg');
-        //    console.log('this data has been sent: ', data)
             }
         ).then(user=>{
             console.log(user)
@@ -95,6 +103,28 @@ class Profile extends React.Component{
         this.setState({[name]:value})
        
     }
+
+    
+
+    onChangeStep = nextStep => {
+        if (nextStep<0){
+            this.setState({step:0})
+        }else if(nextStep>3){
+            this.setState({step:3})
+        }else{
+            this.setState({step:nextStep})
+        }}
+
+       
+
+    onNext = () => {
+        const nextStep = this.state.step
+        this.onChangeStep(nextStep + 1)}
+
+
+    onPrevious = () => {
+        const nextStep = this.state.step
+        this.onChangeStep(nextStep - 1)} 
 
     chooseMyBiz=()=>{
         const tempArray =[]
@@ -188,151 +218,154 @@ class Profile extends React.Component{
       )  
    
     
+        renderDisplay(){
+            let step = this.state.step
+            console.log(step)
+
+            switch(step) {
+                case 1:
+                  return(
+                    <div className='first-col'>
+                
+                    <div>
+                    <h1 className="header" >choose your field of business</h1>
+                        {this.chooseMyBiz()}
+                    <h1 className="header">build your network!</h1>
+                    <DropSelect  importData={this.FuncBizzNetArray}/>  
+                    </div>
+
+                </div>
+                  )  
+                  
+                case 2:
+                    return(
+                        <div className='first-col'>
+                        <div className='choseCards'>
+                            <h1 className="header" >choose your cards for display</h1>
+                            {this.createCheckboxes()}
+                              
+                        </div>
+                    </div>
+                    )
+                 
+                case 3:
+                    return(<div className='first-col'>
+                            <h1 className="header">Upload your images!</h1>
+                            <UploadToFirebase/>
+                            </div>
+                            )
+
+                  
+                default:
+                    return(
+                    <div className='first-col'>
+                    <h1 className="header" >Enter your business information</h1>
+                    <div className='first-col-split'> 
+
+                        <div className='first-col-1'>
+                        
+
+                        <div>
+                        <i className="fa fa-user icon"></i> 
+                        <input className='input' name='name' type='text' value={this.state.name} placeholder='Business Name' onChange={this.handleChange} required ></input>
+                        </div>
+
+                        <div>
+                        <i className="fa fa-phone icon"></i> 
+                        <input className='input' name='phone' type='tel' pattern="^\d{10}$" value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
+                        </div>
+                        
+                        <div>
+                        <i className="fa fa-envelope icon"></i> 
+                        <input className='input' name='email' type='email' value={this.state.email} placeholder='email' onChange={this.handleChange} required ></input>
+                        </div>
+
+                        </div>
+
+
+                        <div className='first-col-2'>
+                        <div>
+                        <i className="fa fa-map-marker icon icon-1"></i> 
+                        <input className='input' name='location' type='text' value={this.state.location} placeholder='Location' onChange={this.handleChange} required ></input>
+                        </div>
+
+                        <div>
+                        <i className="fa fa-globe icon"></i> 
+                        <input className='input' name='website' type='text' value={this.state.website} placeholder='Business WebSite Address' onChange={this.handleChange}  ></input>
+                        </div>
+                           
+
+                        
+                        <div>
+                        <i className="fa fa-facebook icon"></i> 
+                        <input className='input' name='faceBookPage' type='text' value={this.state.faceBookPage} placeholder='faceBook page link' onChange={this.handleChange}  ></input>
+                        </div>
+
+                        </div>
+
+
+                        <div className='first-col-2'>
+                        <div>
+                        <i className="fa fa-instagram icon"></i> 
+                        <input className='input' name='InstagramPage' type='text' value={this.state.InstagramPage} placeholder='Instagram Page link' onChange={this.handleChange} ></input>
+                        </div>
+
+                        <div>
+                        <i className="fa fa-youtube icon icon-1"></i> 
+                        <input className='input' name='youTube' type='text' value={this.state.youTube} placeholder='YouTube Channel link' onChange={this.handleChange}  ></input>
+                        </div>
+
+                        <div>
+                        <i className="fa fa-linkedin icon icon-1"></i> 
+                        <input className='input' name='linkedIn' type='text' value={this.state.linkedIn} placeholder='linkedIn Profile link' onChange={this.handleChange}  ></input>
+                        </div>
+                        </div> 
+                        </div>
+                        
+                    </div>)
+                
+
+              }
+            
+        }
+
 
     
 render(){
  return(
     <div>
+    <BurgerMenu/>
+
     <h1 className='username'>Hi {this.state.U_name}, Build Your Business Profile</h1>
- <form onSubmit={this.handleSubmit}>
-   
-                 
-    <div className='profile'>
-        <div className='first-col'>
-        <h1 className="header" >Enter your business information</h1>
-     
-        <div>
-        <i className="fa fa-user icon"></i> 
-            <input className='input' name='name' type='text' value={this.state.name} placeholder='Business Name' onChange={this.handleChange} required ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-phone icon"></i> 
-        <input className='input' name='phone' type='tel' pattern="^\d{10}$" value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
-        </div>
-        
-        <div>
-        <i className="fa fa-envelope icon"></i> 
-        <input className='input' name='email' type='email' value={this.state.email} placeholder='email' onChange={this.handleChange} required ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-map-marker icon icon-1"></i> 
-        <input className='input' name='location' type='text' value={this.state.location} placeholder='Location' onChange={this.handleChange} required ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-globe icon"></i> 
-        <input className='input' name='website' type='text' value={this.state.website} placeholder='Business WebSite Address' onChange={this.handleChange}  ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-facebook icon"></i> 
-        <input className='input' name='faceBookPage' type='text' value={this.state.faceBookPage} placeholder='faceBook page link' onChange={this.handleChange}  ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-instagram icon"></i> 
-        <input className='input' name='InstagramPage' type='text' value={this.state.InstagramPage} placeholder='Instagram Page link' onChange={this.handleChange} ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-youtube icon icon-1"></i> 
-        <input className='input' name='youTube' type='text' value={this.state.youTube} placeholder='YouTube Channel link' onChange={this.handleChange}  ></input>
-        </div>
-
-        <div>
-        <i className="fa fa-linkedin icon icon-1"></i> 
-        <input className='input' name='linkedIn' type='text' value={this.state.linkedIn} placeholder='linkedIn Profile link' onChange={this.handleChange}  ></input>
-        </div>
-        </div>
-      
-        <div className='second-col'>
-        
-           <div >
-
-           <h1 className="header" >choose your field of business</h1>
-           
-           
-           {this.chooseMyBiz()}
-           </div>
-
-           <div>
-           <DropSelect  importData={this.FuncBizzNetArray}/>
-           </div>
-
-          
-
-           </div>
-
-           <div className='last-col'>
-          
-
-           <div className='choseCards'>
-           <h1 className="header" >choose your cards for display</h1>
-           {this.createCheckboxes()}
-           </div>
-           </div>
+        <form onSubmit={this.handleSubmit} className='form'>
+                            <Steps current={this.state.step}  >
+                            <Steps.Item  />
+                            <Steps.Item  />
+                            <Steps.Item  />
+                            <Steps.Item  />
+                                </Steps>
+                                <hr />
+                                <Panel header={`Step: ${this.state.step + 1}`}>
+                                {this.renderDisplay()}
+                                </Panel>
+                                <hr />
+                            <ButtonGroup>
+                                <Button onClick={this.onPrevious} disabled={this.state.step === 0}>
+                                Previous
+                                </Button>
+                                <Button onClick={this.onNext} disabled={this.state.step === 3}>
+                                Next
+                                </Button>
+                            </ButtonGroup>
+                                    
+            
+        </form>
 
         </div>
-      
-           <input type='submit' value='submit Form' className='button'></input>
-           
-           
-           </form>
-
-           </div>
  
-
-
-
- 
-
-
-
-
-
        )
-   
-
         
-    // render(){
-    //     return(
-                  
-    //     <div className="container">
-                 
-    //     <div className='profile'>
-    //     <h1 className="header" >Build Your Business Profile</h1>
-    //     <form onSubmit={this.handleSubmit}>
-    //     <div>
-    //     <i className="fa fa-user icon"></i> 
-    //         <input className='input' name='name' type='string' value={this.state.name} placeholder='Business Name' onChange={this.handleChange} required ></input>
-    //     </div>
+}}
 
-    //     <div>
-    //     <i className="fa fa-phone icon"></i> 
-    //     <input className='input' name='phone' type='string' value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
-    //     </div>
-        
-    //     <div>
-    //     <i className="fa fa-envelope icon"></i> 
-    //     <input className='input' name='email' type='email' value={this.state.email} placeholder='email' onChange={this.handleChange} required ></input>
-    //     </div>
-
-    //     <div>
-    //     <i className="fa fa-map-marker icon"></i> 
-    //     <input className='input' name='location' type='text' value={this.state.location} placeholder='Location' onChange={this.handleChange} required ></input>
-    //     </div>
-
-       
-//         </form>
-
-//         </div>
-       
-//     </div>
-//         )
-//     }
-}
-}
 
 export default withRouter(Profile);

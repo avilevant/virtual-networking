@@ -5,6 +5,40 @@ import {withRouter} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 
+// const App = () => {
+//     const [step, setStep] = React.useState(0);
+//     const onChange = nextStep => {
+//       setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
+//     };
+  
+//     const onNext = () => onChange(step + 1);
+//     const onPrevious = () => onChange(step - 1);
+  
+//     return (
+//       <div>
+//         <Steps current={step}>
+//           <Steps.Item title="Finished" description="Description" />
+//           <Steps.Item title="In Progress" description="Description" />
+//           <Steps.Item title="Waiting" description="Description" />
+//           <Steps.Item title="Waiting" description="Description" />
+//         </Steps>
+//         <hr />
+//         <div header={`Step: ${step + 1}`}>
+//           <h1>fuck off</h1>
+//         </div>
+//         <hr />
+//         <div>
+//           <button onClick={onPrevious} disabled={step === 0}>
+//             Previous
+//           </button>
+//           <button onClick={onNext} disabled={step === 3}>
+//             Next
+//           </button>
+//         </div>
+//       </div>
+//     );
+//   };
+  
 
 const UploadToFirebase =()=>{
     
@@ -15,6 +49,9 @@ const UploadToFirebase =()=>{
     const [progress, setProgress] = useState(0)
     const token =  Cookies.get('token')
     console.log(token)
+
+ 
+  
 
     const handleChange = event=>{
         if(event.target.files[0]){
@@ -58,9 +95,9 @@ const UploadToFirebase =()=>{
                     .then(url=>{
                         url1===''?setUrl1(url):setUrl2(url)
                         
-                        // setImage(null)
+                        
                     })
-                    .then( fetch('http://localhost:3003/uploadImg', {
+                    .then( fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg', {
                         method: 'post',
                         headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
                         body: JSON.stringify({
@@ -82,50 +119,43 @@ const UploadToFirebase =()=>{
             }
         )
         })
-        
-      
+        // const C_id = Cookies.get('C_id')
+        // this.props.history.push(`/personalprofile/${C_id}`)
 
     }
     
-    
-  
 
+    
 
     return(
-        <div>
-        <progress value={progress} max="100"/>
-        <br/>
-        <br/>
-        <input type="file" name='background' onChange={handleChange}/>
-        {/*<button onClick={handleUpload}>upload</button>*/}
-        <br/>
-        <br/>
-        
-        
-        <img src={url1} alt='imagePreview' className='img'/>
-      
-        <br/>
-        <br/>
-      
-        <br/>
-        <br/>
+    <div>
 
+        <progress value={progress} max="100" className='progressBar'/>
+
+    <div className='imageUpload'>
        
-        <br/>
-        <br/>
-        <input type="file" name='smallImg' onChange={handleChange}/>
-        
-        <br/>
-        <br/>
-        
-        <img src={url2} alt='imagePreview' className='img' />
-        
-        
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <button onClick={handleUpload}>upload</button>
+      <div className='backgroundImg'>
+      <input type="file" name='background' onChange={handleChange}  />
+      </div>
+
+      <div className='smallImg'>
+      <input type="file" name='smallImg' onChange={handleChange}/>
+      </div>
+
+      <div>
+      <img src={url1} alt='imagePreview' className='img'  placeholder="https://via.placeholder.com/150" />
+      </div>
+    
+      <div>
+      <img src={url2} alt='imagePreview' className='img' />
+      </div>
+      
+     
+      
+     
+
+      </div>
+      <button onClick={handleUpload}>upload</button>
         </div>
     )
 

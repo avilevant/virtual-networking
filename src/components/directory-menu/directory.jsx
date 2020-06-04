@@ -30,49 +30,19 @@ class Directory extends React.Component{
 
         }
 
-        //temp version for testing without db
-
-        
-
-        // this.state = {
-        //     cards: null,
-        //     name:'חנות קופים',
-        //     location:'המסגר 11 תל אביב',
-        //     phone:'0547990712',
-        //     email:'avilevant@gmail.com',
-        //     website:'merkaz.levant.com',
-        //     faceBookPage:'https://www.facebook.com/merkaz.levant/',
-        //     InstagramPage:'',
-        //     youTube:'https://www.youtube.com/channel/UC21w07Iz5gHrNcyJ76nW57g',
-        //     linkedIn:'',
-        //     coverImg:'https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2F3093524_500x500.jpg?alt=media&token=2457dbf1-d671-4d43-84ff-da87001fd702',
-        //     smallImg:'https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2FIMG_0087_pp_500x500.jpg?alt=media&token=68e02d03-cf10-4c88-8633-84568d56a9a7'
-
-            
-
-        // }
-
-        // const userArray = ["1", "2", "3", "4", "5", "6", "7", "8", "11"];
-        // const personalCards = CreateCardList(this.state).filter(card=> userArray.includes(card.id.toString()));
-        // console.log(this.state)
-
-        // this.setState({cards:personalCards})
-
+     
       
     }
 
     
     
     insertImg(){
-        // const bigImg = require('../../img/3093524.jpg')
-        // const img = this.state.coverImg
-        // const bigImg = require(img)
+       
            return <img src={this.state.coverImg} alt='user data' className='bigImg'  />
     }
 
     insertImg1(){
-        // const smallImg = require('../../img/IMG_0087_pp.jpg')
-        // const smallImg = require(this.state.smallImg)
+       
            return <img src={this.state.smallImg} alt='user data' className='smallImg'  />
     }
 
@@ -115,8 +85,8 @@ class Directory extends React.Component{
 
     componentDidMount(){
         const C_id = Cookies.get('C_id')
-        console.log(C_id)
-        fetch(`http://localhost:3003/personalprofile/${C_id}`)
+        
+               fetch(`https://afternoon-thicket-58274.herokuapp.com/personalprofile/${C_id}`)
         .then(response => response.json())
         .then((data)=>{
             
@@ -126,6 +96,7 @@ class Directory extends React.Component{
              } 
            console.log(userArray)
            const propsForCardList = {
+               personalprofile:`https://afternoon-thicket-58274.herokuapp.com/personalprofile/${C_id}`,
                name:data.business_name,
                location:data.business_location,
                phone:data.business_phone,
@@ -134,7 +105,7 @@ class Directory extends React.Component{
                facebook: data.business_facebook,
                InstagramPage:data.business_instagram,
                youtube: data.business_youtube,
-               linkedIn: data.business_linkedIn
+               linkedIn: data.business_linkedin
            }
            const personalCards = CreateCardList(propsForCardList).filter(card=> userArray.includes(card.id.toString()));
 
@@ -152,7 +123,7 @@ class Directory extends React.Component{
            faceBookPage:data.business_facebook,
            InstagramPage:data.business_instagram,
            youTube:data.business_youtube,
-           linkedIn: data.business_linkedIn,
+           linkedIn: data.business_linkedin,
            coverImg: data.business_background_pic,
            smallImg:data.business_small_pic
           
@@ -165,7 +136,7 @@ class Directory extends React.Component{
 
     
 
-    render(props){
+    render(){
 
         
 

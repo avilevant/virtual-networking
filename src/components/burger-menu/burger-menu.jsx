@@ -89,6 +89,7 @@ class BurgerMenu extends React.Component{
   
   componentDidMount(){
   const token =  Cookies.get('token')
+  const C_id = Cookies.get('C_id')
 
   if (token===undefined){
   this.setState(
@@ -97,9 +98,9 @@ class BurgerMenu extends React.Component{
     ref3:"/",name3:"Home", id3:"Home"} 
     
   )
-}else {
+}else  {
   this.setState(
-    {ref1:"/personalprofile",name1:'My_Profile', id1:'personal', 
+    {ref1:`/personalprofile/${C_id}`,name1:'My_Profile', id1:'personal', 
     ref2:"/profile",name2:'Edit_Profile', id2:'buildProfile',
     ref3:"/",name3:'Sign_Out', id3:"signOut"}
 
@@ -113,10 +114,10 @@ class BurgerMenu extends React.Component{
   render(){
     return(
       <Menu right >
-      <a id={this.state.id1} className="menu-item" href={this.state.ref1}>{this.state.name1}</a>
-      <a id={this.state.id2} className="menu-item" href={this.state.ref2}>{this.state.name2}</a>
+      <a id={this.state.id1} className="bm-item bm-item-list" href={this.state.ref1}>{this.state.name1}</a>
+      <a id={this.state.id2} className="bm-item bm-item-list" href={this.state.ref2}>{this.state.name2}</a>
     
-      <a id={this.state.id3} className="menu-item" href={this.state.ref3}>{this.state.name3}</a>
+      <a id={this.state.id3} className="bm-item bm-item-list" href={this.state.ref3}>{this.state.name3}</a>
       
     </Menu>
     )

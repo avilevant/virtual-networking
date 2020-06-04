@@ -7,7 +7,7 @@
     position: absolute;
 }
 
-.container {
+.container1 {
     width: 80vw;
     height: 80vh;
     position: relative;
@@ -16,21 +16,41 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 20px;
+    @media(max-width: 800px) {
+        grid-template-columns: 1fr;
+        width: 90vw;
+        height: 95vh;
+    }
     .img {
-        width: 30vw;
+        height: 70%;
+        // width: 20vw;
         display: flex;
         margin: auto;
+        @media(max-width: 800px) {
+            width: 50vw;
+        }
     }
     .sign-up {
         margin: auto;
         padding: 50px;
+        @media(max-width: 800px) {
+            padding: 30px;
+        }
         .header {
             margin-bottom: 40px;
+            @media(max-width: 800px) {
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
         }
         .input {
             border: none;
             border-bottom: 2px solid black;
             margin-bottom: 35px;
+            @media(max-width: 800px) {
+                margin-bottom: 20px;
+                // font-size: 10px;
+            }
         }
         .icon {
             padding: 1px;

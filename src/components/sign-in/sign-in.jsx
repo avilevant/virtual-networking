@@ -25,7 +25,7 @@ class SignIn extends React.Component{
      
     handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:3003/signin', {
+        fetch('https://afternoon-thicket-58274.herokuapp.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -44,7 +44,7 @@ class SignIn extends React.Component{
                 Cookies.set('C_name',data.user.name)
                 Cookies.set('C_id',data.user.id)
                 
-                this.props.history.push('/personalprofile/:id'); 
+                this.props.history.push(`/personalprofile/${data.user.id}`); 
                 // this.returnId(data.id)
             } else (
                     prompt('user name or password incorrect')

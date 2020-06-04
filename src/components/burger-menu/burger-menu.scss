@@ -6,20 +6,26 @@
     height: 30px;
     right: 36px;
     top: 36px;
+    @media(max-width: 800px) {
+        width: 26px;
+        height: 20px;
+        right: 26px;
+        top: 26px;
+    }
 }
 
 
 /* Color/shape of burger icon bars */
 
 .bm-burger-bars {
-    background: #373a47;
+    background: #3498ff;
 }
 
 
 /* Color/shape of burger icon bars on hover*/
 
 .bm-burger-bars-hover {
-    background: #ffffff;
+    background: #ff7300c7;
 }
 
 
@@ -71,7 +77,7 @@
 /* Wrapper for item list */
 
 .bm-item-list {
-    color: #b8b7ad;
+    color: #484841;
     padding: 0.8em;
 }
 
@@ -79,6 +85,8 @@
 /* Individual item */
 
 .bm-item {
+    background-color: darken($color: #4e4a4a, $amount: 0);
+    margin: 3px;
     display: inline-block;
     color: white;
     &:hover {

@@ -32,7 +32,7 @@ class SignUp extends React.Component{
 
      if(newUser.password === newUser.validPassword){
         
-        fetch('http://localhost:3003/register', {
+        fetch('https://afternoon-thicket-58274.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -76,7 +76,7 @@ class SignUp extends React.Component{
 
     render(){
         return(
-         <div className="container">  
+         <div className="container1">  
             <div className='sign-up'>
             <h1 className="header">Sign Up</h1>
             <form onSubmit={this.handleSubmit}>

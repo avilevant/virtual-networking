@@ -1,8 +1,10 @@
-    .menu-item {
+    .menu-item1 {
         padding: 10px;
         margin: 10px;
-        background-color: rgb(73, 71, 71);
-        border-radius: .25rem;
+        // background-color: #ebedf0;
+        border: .5px solid #c7c6c6;
+        box-shadow: 3px 4px 0px 0px #eceaea;
+        border-radius: .70rem;
         &:hover {
             cursor: pointer;
             transform: translateY(-10px) scale(1.05);
@@ -23,6 +25,8 @@
             top: 35%;
             transform: translate(-50%, -50%);
             background-size: contain;
+            color: #4f4f4f;
+            ;
             //background-image: url('../../img/facebook.png');
             background-color: transparent;
             @media(max-width: 800px) {
@@ -31,7 +35,7 @@
             }
         }
         .item-title {
-            color: whitesmoke;
+            color: #3498ff;
             text-align: center;
             font-size: 16px;
             font-weight: 600;

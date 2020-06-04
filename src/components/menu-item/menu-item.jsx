@@ -10,7 +10,7 @@ const MenuItem = ({title,icon,data}) =>{
    
     
   return(
-        <div className="menu-item"  onClick={data}>
+        <div className="menu-item1"  onClick={data}>
         
         
         <div className="item-title">{title}</div>

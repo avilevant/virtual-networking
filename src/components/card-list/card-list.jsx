@@ -17,11 +17,12 @@ const CreateCardList =(props) => {
                    callback: ()=> {
                     if (isMobile) {
                         window.location.href = `tel:+972${props.phone}`
+                    }else{
+                        alert( `our number is ${props.phone}, please call us`)
                     }
                        
-                        console.log(props.phone)
-                        console.log('call clicked')
-                        alert( `our number is ${props.phone}, please call us`)
+                     
+                       
                      
             }
                },
@@ -110,7 +111,7 @@ const CreateCardList =(props) => {
                {
                 title:'SHARE',
                 icon:<ion-icon name="share-social-outline"></ion-icon>,
-                callback: () =>navigator.share(props.website) ,
+                callback: () =>navigator.share({text:'check out my e-card' ,url:props.personalprofile}) ,
                 //change later to personalprofile
                 id:11
             }    

@@ -33,7 +33,18 @@
             @media(max-width: 800px) {
                 height: 50px;
                 width: 50px;
+                z-index: 100;
             }
+        }
+        .svg {
+            height: 100px;
+            width: 100px;
+            @media(max-width: 800px) {
+                height: 50px;
+                width: 50px;
+            }
+            // border: .5px solid #c7c6c6;
+            // box-shadow: 4px 4px 5px 2px #d8d5d5;
         }
         .item-title {
             color: #3498ff;

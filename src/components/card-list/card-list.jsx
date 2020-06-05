@@ -1,7 +1,7 @@
 import React from 'react';
 import {isMobile} from 'react-device-detect';
 
-// import Directory from '../directory-menu/directory';
+// import img2 from '../../img/img2.png';
 
 
 
@@ -13,6 +13,7 @@ const CreateCardList =(props) => {
                {
                    title:'CALL',
                    icon:<ion-icon name="call-outline"></ion-icon>,
+                // icon:<img src={img2} alt='img2' className='svg'/>,
                    id:1,
                    callback: ()=> {
                     if (isMobile) {
@@ -49,7 +50,7 @@ const CreateCardList =(props) => {
                    icon: <ion-icon name="logo-whatsapp"></ion-icon>,
                    callback: () =>{ 
                     if (isMobile) {
-                        window.open(`https://wa.me/${props.phone}`)
+                        window.open(`https://wa.me/+972${props.phone}`)
                 }else{
 
                     alert('this option is available on mobile only')

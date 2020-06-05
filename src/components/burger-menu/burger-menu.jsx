@@ -93,16 +93,16 @@ class BurgerMenu extends React.Component{
 
   if (token===undefined){
   this.setState(
-    {ref1:"/signin",name1:'Sign_In', id1:'signIn', 
+    {ref1:"/signin",name1:'Sign In', id1:'signIn', 
     ref2:"/signup",name2:"Register", id2:"signup",
     ref3:"/",name3:"Home", id3:"Home"} 
     
   )
 }else  {
   this.setState(
-    {ref1:`/personalprofile/${C_id}`,name1:'My_Profile', id1:'personal', 
-    ref2:"/profile",name2:'Edit_Profile', id2:'buildProfile',
-    ref3:"/",name3:'Sign_Out', id3:"signOut"}
+    {ref1:`/personalprofile/${C_id}`,name1:'My Profile', id1:'personal', 
+    ref2:"/profile",name2:'Edit Profile', id2:'buildProfile',
+    ref3:"/",name3:'Sign Out', id3:"signOut"}
 
 
   )
@@ -114,6 +114,8 @@ class BurgerMenu extends React.Component{
   render(){
     return(
       <Menu right >
+      <i class="fa fa-sign-in-alt"></i>
+
       <a id={this.state.id1} className="bm-item bm-item-list" href={this.state.ref1}>{this.state.name1}</a>
       <a id={this.state.id2} className="bm-item bm-item-list" href={this.state.ref2}>{this.state.name2}</a>
     

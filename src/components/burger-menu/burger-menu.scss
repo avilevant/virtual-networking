@@ -18,7 +18,7 @@
 /* Color/shape of burger icon bars */
 
 .bm-burger-bars {
-    background: #3498ff;
+    background: #3e4954;
 }
 
 
@@ -63,7 +63,7 @@
 .bm-menu {
     background: #ccccce;
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
+    font-size: 1.5em;
 }
 
 
@@ -79,19 +79,21 @@
 .bm-item-list {
     color: #484841;
     padding: 0.8em;
+    text-decoration: none;
 }
 
 
 /* Individual item */
 
 .bm-item {
-    background-color: darken($color: #4e4a4a, $amount: 0);
+    // background-color: darken($color: #4e4a4a, $amount: 0);
     margin: 3px;
     display: inline-block;
     color: white;
     &:hover {
         color: black;
         background-color: whitesmoke;
+        text-decoration: none;
     }
 }
 

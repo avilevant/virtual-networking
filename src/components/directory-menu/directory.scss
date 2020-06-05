@@ -37,7 +37,9 @@
            object-fit: cover;
            @media(max-width: 600px) {
                height: 45vh;
-               width: 95%;
+               width: 100vw;
+               margin: 0;
+               border-top: none;
            }
            // align-items: center;
            //    grid-template-rows: 70vh;
@@ -65,7 +67,8 @@
        width: 15rem;
        height: 15rem;
        background-color: whitesmoke;
-       border: 2px solid black;
+       border: .5px solid #c7c6c6;
+       box-shadow: 4px 4px 5px 2px #d8d5d5;
        position: relative;
        overflow: hidden;
        border-radius: 50%;

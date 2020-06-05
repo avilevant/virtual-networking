@@ -131,23 +131,26 @@ const UploadToFirebase =()=>{
     <div>
 
         <progress value={progress} max="100" className='progressBar'/>
+        <p>Upload Progress Bar</p>
 
     <div className='imageUpload'>
        
       <div className='backgroundImg'>
       <input type="file" name='background' onChange={handleChange}  />
+      <p>Your background Image</p>
+      </div>
+
+      <div>
+      <img src={url1 || "https://via.placeholder.com/155"} alt='imagePreview' className='img' />
       </div>
 
       <div className='smallImg'>
       <input type="file" name='smallImg' onChange={handleChange}/>
-      </div>
-
-      <div>
-      <img src={url1} alt='imagePreview' className='img'  placeholder="https://via.placeholder.com/150" />
+      <p>Your Profile/Logo Image</p>
       </div>
     
       <div>
-      <img src={url2} alt='imagePreview' className='img' />
+      <img src={url2 || "https://via.placeholder.com/150"} alt='imagePreview' className='img' />
       </div>
       
      

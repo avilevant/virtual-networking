@@ -37,13 +37,13 @@ class Directory extends React.Component{
     
     
     insertImg(){
-       
-           return <img src={this.state.coverImg} alt='user data' className='bigImg'  />
+            const bigImgDef = require('../../img/3093524.jpg')
+           return <img src={this.state.coverImg || bigImgDef} alt='user data' className='bigImg'  />
     }
 
     insertImg1(){
-       
-           return <img src={this.state.smallImg} alt='user data' className='smallImg'  />
+            const smallImgDef = require('../../img/IMG_0087_pp.jpg')
+           return <img src={this.state.smallImg || smallImgDef} alt='user data' className='smallImg'  />
     }
 
    

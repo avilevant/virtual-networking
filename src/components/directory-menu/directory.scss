@@ -18,12 +18,17 @@
            //    position: relative;
            //    top: 9rem;
            @media(max-width: 800px) {
-               grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-               grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+               //    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+               //    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+               grid-template-rows: repeat(3, 1fr);
+               grid-template-columns: repeat(3, 1fr);
+               //    height: 45vh;
+               //    width: 80vw;
+               margin: auto;
            }
            @media(max-width: 400px) {
-               grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-               grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+               //    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+               //    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
            }
        }
        .bigImg {
@@ -49,6 +54,35 @@
    .view {
        @media(max-width: 600px) {
            height: 50vh;
+           display: grid;
+           grid-template-rows: 36vh;
+       }
+       .smallImgFig {
+           width: 15rem;
+           height: 15rem;
+           background-color: whitesmoke;
+           border: .5px solid #c7c6c6;
+           box-shadow: 4px 4px 5px 2px #d8d5d5;
+           position: relative;
+           overflow: hidden;
+           border-radius: 50%;
+           margin-left: 20px;
+           @media(max-width: 600px) {
+               width: 7rem;
+               height: 7rem;
+               margin: auto;
+           }
+           .smallImg {
+               object-fit: cover;
+               width: 15rem;
+               height: 15rem;
+               //    position: absolute;
+               z-index: 10;
+               @media(max-width: 600px) {
+                   width: 7rem;
+                   height: 7rem;
+               }
+           }
        }
    }
    
@@ -60,32 +94,5 @@
        @media(max-width: 600px) {
            margin: 20px;
            font-size: 20px;
-       }
-   }
-   
-   .smallImgFig {
-       width: 15rem;
-       height: 15rem;
-       background-color: whitesmoke;
-       border: .5px solid #c7c6c6;
-       box-shadow: 4px 4px 5px 2px #d8d5d5;
-       position: relative;
-       overflow: hidden;
-       border-radius: 50%;
-       margin-left: 20px;
-       @media(max-width: 600px) {
-           width: 8rem;
-           height: 8rem;
-       }
-       .smallImg {
-           object-fit: cover;
-           width: 15rem;
-           height: 15rem;
-           position: relative;
-           z-index: 10;
-           @media(max-width: 600px) {
-               width: 8rem;
-               height: 8rem;
-           }
        }
    }

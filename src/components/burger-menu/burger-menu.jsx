@@ -113,15 +113,19 @@ class BurgerMenu extends React.Component{
 
   render(){
     return(
+      <div>
+      
+     
       <Menu right >
-      <i class="fa fa-sign-in-alt"></i>
+      
 
-      <a id={this.state.id1} className="bm-item bm-item-list" href={this.state.ref1}>{this.state.name1}</a>
+      <a id={this.state.id1} className="bm-item bm-item-list" href={this.state.ref1}>{this.state.name1}  </a>
       <a id={this.state.id2} className="bm-item bm-item-list" href={this.state.ref2}>{this.state.name2}</a>
     
       <a id={this.state.id3} className="bm-item bm-item-list" href={this.state.ref3}>{this.state.name3}</a>
       
     </Menu>
+      </div>
     )
            
                 

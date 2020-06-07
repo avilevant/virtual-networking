@@ -61,15 +61,14 @@
            width: 15rem;
            height: 15rem;
            background-color: whitesmoke;
-           border: .5px solid #c7c6c6;
-           box-shadow: 4px 4px 5px 2px #d8d5d5;
+           border: 1.5px solid #c7c6c6;
            position: relative;
            overflow: hidden;
            border-radius: 50%;
            margin-left: 20px;
            @media(max-width: 600px) {
-               width: 7rem;
-               height: 7rem;
+               width: 8rem;
+               height: 8rem;
                margin: auto;
            }
            .smallImg {
@@ -79,8 +78,8 @@
                //    position: absolute;
                z-index: 10;
                @media(max-width: 600px) {
-                   width: 7rem;
-                   height: 7rem;
+                   width: 8rem;
+                   height: 8rem;
                }
            }
        }

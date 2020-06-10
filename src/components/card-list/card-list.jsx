@@ -1,7 +1,16 @@
 import React from 'react';
 import {isMobile} from 'react-device-detect';
-
-// import img2 from '../../img/img2.png';
+import  img1 from '../../img/fwdnewicons/2-08.png';
+import  img2 from '../../img/fwdnewicons/2-10.png';
+import  img3 from '../../img/fwdnewicons/2-13.png';
+import  img4 from '../../img/fwdnewicons/2-12.png';
+import  img5 from '../../img/fwdnewicons/2-09.png';
+import  img6 from '../../img/img1.png';
+import  img7 from '../../img/fwdnewicons/2-11.png';
+import  img8 from '../../img/img1.png';
+import  img9 from '../../img/img1.png';
+import  img10 from '../../img/img1.png';
+import  img11 from '../../img/img1.png';
 
 
 
@@ -12,8 +21,8 @@ const CreateCardList =(props) => {
                const cardList = [
                {
                    title:'CALL',
-                   icon:<ion-icon name="call-outline"></ion-icon>,
-                // icon:<img src={img2} alt='img2' className='svg'/>,
+                //    icon:<ion-icon name="call-outline"></ion-icon>,
+                icon:<img src={img1} alt='img1' className='svg'/>,
                    id:1,
                    callback: ()=> {
                     if (isMobile) {
@@ -29,7 +38,8 @@ const CreateCardList =(props) => {
                },
                {
                    title:'SMS',
-                   icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
+                //    icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
+                   icon:<img src={img2} alt='img2' className='svg'/>,
                    id:2,
                    callback: ()=>{ 
                     if (isMobile) {
@@ -47,7 +57,8 @@ const CreateCardList =(props) => {
                },
                {
                    title:'WHATSAPP',
-                   icon: <ion-icon name="logo-whatsapp"></ion-icon>,
+                //    icon: <ion-icon name="logo-whatsapp"></ion-icon>,
+                   icon:<img src={img3} alt='img3' className='svg'/>,
                    callback: () =>{ 
                     if (isMobile) {
                         window.open(`https://wa.me/+972${props.phone}`)
@@ -60,13 +71,15 @@ const CreateCardList =(props) => {
                },
                {
                    title:'EMAIL',
-                   icon:<ion-icon name="mail-outline"></ion-icon>,
+                //    icon:<ion-icon name="mail-outline"></ion-icon>,
+                   icon:<img src={img4} alt='img4' className='svg'/>,
                    callback: ()=> window.location=`mailto:${props.email}`,
                    id:4
                },
                {
                    title:'LOCATION',
-                   icon:<ion-icon name="location-outline"></ion-icon>,
+                //    icon:<ion-icon name="location-outline"></ion-icon>,
+                   icon:<img src={img5} alt='img5' className='svg'/>,
                 //    callback: () =>window.open("http://localhost:3000/map"),
                 // callback: () =>window.open(`http://google.com/maps/search/?api=1&${encoded}`),
                 callback: () =>{
@@ -87,7 +100,8 @@ const CreateCardList =(props) => {
                },
                {
                    title:'WEBSITE',
-                   icon: <ion-icon name="globe-outline"></ion-icon>,
+                //    icon: <ion-icon name="globe-outline"></ion-icon>,
+                   icon:<img src={img7} alt='img7' className='svg'/>,
                    callback: () =>window.open(props.website),
                    id:7
                },

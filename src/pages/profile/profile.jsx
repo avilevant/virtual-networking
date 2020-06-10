@@ -37,7 +37,10 @@ class Profile extends React.Component{
             BizzNetArray:[],
             list:BusinessList,
             U_name:'',
-            step:0
+            step:0,
+            message:'first step'
+            // url1:'',
+            // url2:''
         }
         
         
@@ -51,6 +54,7 @@ class Profile extends React.Component{
     componentDidMount(){
         
         const C_name =  Cookies.get('C_name')
+        
         console.log(C_name)
         this.setState({U_name:C_name})
         
@@ -58,7 +62,9 @@ class Profile extends React.Component{
 
     handleSubmit = (event,props) => {
         event.preventDefault();
+        const C_id =  Cookies.get('C_id')
         const token =  Cookies.get('token')
+        // const C_id = Cookies.get('C_id')
         console.log(token)
         fetch('https://afternoon-thicket-58274.herokuapp.com/profile', {
             method: 'post',
@@ -75,14 +81,16 @@ class Profile extends React.Component{
                 linkedIn: this.state.linkedIn,
                 arrayOfCards:this.state.arrayOfCards,
                 mybizz:this.state.mybizz,
-                BizzNetArray:this.state.BizzNetArray
+                BizzNetArray:this.state.BizzNetArray,
+                // url1:this.state.url1,
+                // url2:this.state.utl2
             })
 
         })
         .then(response =>response.json())
         .then(data=> {
             console.log(data)
-            this.props.history.push('/uploadImg');
+            this.props.history.push(`personalprofile/${C_id}`);
             }
         ).then(user=>{
             console.log(user)
@@ -107,13 +115,17 @@ class Profile extends React.Component{
     
 
     onChangeStep = nextStep => {
-        if (nextStep<0){
-            this.setState({step:0})
-        }else if(nextStep>3){
-            this.setState({step:3})
-        }else{
-            this.setState({step:nextStep})
-        }}
+        if (nextStep<=0){
+            this.setState({step:0,message:'first step'})
+        }else if(nextStep>=3){
+            this.setState({step:3, message:'last step'})
+        }else if(nextStep===1){
+            this.setState({step:1,message:'second step'})
+        }else if(nextStep===2){
+            this.setState({step:2,message:'theird step'})
+        }
+    }
+   
 
        
 
@@ -216,6 +228,8 @@ class Profile extends React.Component{
         this.state.list.map(this.createCheckbox)
        
       )  
+
+          
    
     
         renderDisplay(){
@@ -240,20 +254,23 @@ class Profile extends React.Component{
                 case 2:
                     return(
                         <div className='first-col'>
+                        <h1 className="header" >choose your cards for display</h1>
                         <div className='choseCards'>
-                            <h1 className="header" >choose your cards for display</h1>
-                            {this.createCheckboxes()}
-                              
+                        
+                        {this.createCheckboxes()}
                         </div>
-                    </div>
+                        <input type="submit" value='Update Profile' className='button' />
+                        </div>
+                    )
+                  
+                case 3:
+                    return(
+                        <div className='first-col'>
+                        <h1 className="header">Upload your images!</h1>
+                        <UploadToFirebase />
+                        </div>
                     )
                  
-                case 3:
-                    return(<div className='first-col'>
-                            <h1 className="header">Upload your images!</h1>
-                            <UploadToFirebase/>
-                            </div>
-                            )
 
                   
                 default:
@@ -338,14 +355,14 @@ render(){
 
     <h1 className='username'>Hi {this.state.U_name}, Build Your Business Profile</h1>
         <form onSubmit={this.handleSubmit} className='form'>
-                            <Steps current={this.state.step}  >
+                            <Steps   current={this.state.step} >
                             <Steps.Item  />
                             <Steps.Item  />
                             <Steps.Item  />
                             <Steps.Item  />
                                 </Steps>
                                 <hr />
-                                <Panel header={`Step: ${this.state.step + 1}`}>
+                                <Panel header={`Step ${this.state.step + 1}:  ${this.state.message}`}>
                                 {this.renderDisplay()}
                                 </Panel>
                                 <hr />

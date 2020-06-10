@@ -1,14 +1,71 @@
 .homepage {
     margin: 0;
     padding: 0;
-    background-color: rgb(41, 113, 214);
-    height: 100vh;
+    background-color: rgb(22, 22, 54);
+    // height: 100vh;
     color: white;
-    h1,
-    h2 {
+    // h1,
+    // h2 {
+    //     position: relative;
+    //     top: 20%;
+    //     text-align: center;
+    //     padding: 10px;
+    // }
+    .mainImage {
+        height: 85vh;
+        background-image: linear-gradient( to right bottom, rgba(blue, 0.6), rgba(rgb(79, 79, 235), 0.6)), url(../../img/network-3148727_1920.jpg);
+        background-size: cover;
+        background-position: top;
         position: relative;
-        top: 20%;
-        text-align: center;
-        padding: 10px;
+        // position: relative;
+        // width: 100vw;
+        // height: 80vh;
+        .mainHeader {
+            position: relative;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            h2 {
+                padding-top: 50px;
+                @media(max-width: 800px) {
+                    font-size: 30px;
+                    padding-top: 30px;
+                }
+            }
+        }
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 50px 40px;
+        @media(max-width: 800px) {
+            display: block;
+            padding: 40px 40px;
+            margin: auto;
+            h2 {
+                font-size: 30px;
+                text-align: center;
+            }
+        }
+        &_data {
+            margin: 20px auto;
+            margin-right: 100px;
+            @media(max-width: 800px) {
+                margin: 40px auto;
+            }
+        }
+        &-image {
+            text-align: center;
+        }
+        &_smallImage {
+            margin: 20px auto;
+            @media(max-width: 800px) {
+                width: 50vw;
+            }
+        }
+        p {
+            padding-top: 30px;
+        }
     }
 }

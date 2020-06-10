@@ -80,10 +80,12 @@ class SignIn extends React.Component{
             
             <i className="fa fa-envelope icon"></i> 
             <input className='input' name='email' type='email' value={this.state.email} placeholder='email' onChange={this.handleChange} required ></input>
+            <label  className="input__label">whatever@provider.com</label>
             </div>
             <div>
             <i className="fa fa-key icon"></i> 
-            <input className='input' name='password' type='password' value={this.state.password} placeholder='password' onChange={this.handleChange} required ></input>
+            <input className='input' name='password' type='password' value={this.state.password} placeholder='password' minLength={8} onChange={this.handleChange} required ></input>
+            <label  className="input__label">your password</label>
             </div>
             <input type='submit' value='submit Form' className='button'></input>
             </form>

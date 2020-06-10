@@ -1,43 +1,10 @@
 import React, {useState} from 'react';
 import {storage} from '../../firebase/firebase';
 import './photo-upload.scss';
-import {withRouter} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 
-// const App = () => {
-//     const [step, setStep] = React.useState(0);
-//     const onChange = nextStep => {
-//       setStep(nextStep < 0 ? 0 : nextStep > 3 ? 3 : nextStep);
-//     };
-  
-//     const onNext = () => onChange(step + 1);
-//     const onPrevious = () => onChange(step - 1);
-  
-//     return (
-//       <div>
-//         <Steps current={step}>
-//           <Steps.Item title="Finished" description="Description" />
-//           <Steps.Item title="In Progress" description="Description" />
-//           <Steps.Item title="Waiting" description="Description" />
-//           <Steps.Item title="Waiting" description="Description" />
-//         </Steps>
-//         <hr />
-//         <div header={`Step: ${step + 1}`}>
-//           <h1>fuck off</h1>
-//         </div>
-//         <hr />
-//         <div>
-//           <button onClick={onPrevious} disabled={step === 0}>
-//             Previous
-//           </button>
-//           <button onClick={onNext} disabled={step === 3}>
-//             Next
-//           </button>
-//         </div>
-//       </div>
-//     );
-//   };
+
   
 
 const UploadToFirebase =()=>{
@@ -48,12 +15,15 @@ const UploadToFirebase =()=>{
     const [url2,setUrl2]=useState('');
     const [progress, setProgress] = useState(0)
     const token =  Cookies.get('token')
-    console.log(token)
+   
+    // console.log(token)
 
  
   
 
     const handleChange = event=>{
+           
+
         if(event.target.files[0]){
             //update state for both images
             image===null?setImage(event.target.files[0]) : setImage2(event.target.files[0])
@@ -73,8 +43,10 @@ const UploadToFirebase =()=>{
      
     const files =[image,image2]
     
-
-    const handleUpload = () =>{
+//upload both images
+    const handleUpload = (props) =>{
+        
+        
         files.forEach(file=>{
             const uploadTask = storage.ref(`images/${file.name}`).put(file);
 
@@ -88,14 +60,16 @@ const UploadToFirebase =()=>{
             },
             error => {console.log(error)},
             ()=>{
+                //get url from storage for reference
                 storage
                     .ref('images')
                     .child(file.name)
                     .getDownloadURL()
                     .then(url=>{
-                        url1===''?setUrl1(url):setUrl2(url)
+                       
+                            url1===''?setUrl1(url):setUrl2(url)
                         
-                        
+                         
                     })
                     .then( fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg', {
                         method: 'post',
@@ -108,20 +82,19 @@ const UploadToFirebase =()=>{
                     })
                     .then(response =>response.json())
                     .then(data=> {
-                        
-                        
-                           
                             console.log(data)
-                        
-                        }
-                    )
-            )
-            }
-        )
-        })
-        // const C_id = Cookies.get('C_id')
-        // this.props.history.push(`/personalprofile/${C_id}`)
+                           
+                        })
+                      )
+        }
+        )})
+       
 
+
+        // props.history.push(`personalprofile/${C_id}`);
+        //pass the urls to profile for single upload command
+        // props.onClick(url1,url2)
+        
     }
     
 
@@ -129,15 +102,17 @@ const UploadToFirebase =()=>{
 
     return(
     <div>
-
-        <progress value={progress} max="100" className='progressBar'/>
+        <div className='progressBar'>
+        
+        <progress value={progress} max="100" />
         <p>Upload Progress Bar</p>
+        </div>
 
     <div className='imageUpload'>
        
       <div className='backgroundImg'>
       <input type="file" name='background' onChange={handleChange}  />
-      <p>Your background Image</p>
+      <p>Your background Image - optional</p>
       </div>
 
       <div>
@@ -146,7 +121,7 @@ const UploadToFirebase =()=>{
 
       <div className='smallImg'>
       <input type="file" name='smallImg' onChange={handleChange}/>
-      <p>Your Profile/Logo Image</p>
+      <p>Your Profile/Logo Image - must have!</p>
       </div>
     
       <div>
@@ -158,10 +133,10 @@ const UploadToFirebase =()=>{
      
 
       </div>
-      <button onClick={handleUpload}>upload</button>
+      <button onClick={handleUpload} className='buttonImgUpload'>Upload Your Images</button>
         </div>
     )
 
 }
 
-export default withRouter(UploadToFirebase);
+export default UploadToFirebase;

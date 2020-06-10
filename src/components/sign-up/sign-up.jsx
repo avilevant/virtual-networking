@@ -84,26 +84,31 @@ class SignUp extends React.Component{
             <div>
             <i className="fa fa-user icon"></i> 
             <input className='input' name='name' type='string' value={this.state.name} placeholder='Full Name' onChange={this.handleChange} required ></input>
+            <label  className="input__label">full name</label>
             </div>
 
             <div>
             <i className="fa fa-phone icon"></i> 
-            <input className='input' name='phone' type='string' value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
+            <input className='input' name='phone'  type='tel' pattern="^\d{10}$" value={this.state.phone} placeholder='Phone Number' onChange={this.handleChange} required ></input>
+            <label  className="input__label">personal mobile</label>
             </div>
 
             <div> 
             <i className="fa fa-envelope icon"></i> 
             <input className='input' name='email' type='email' value={this.state.email} placeholder='Email' onChange={this.handleChange} required ></input>
+            <label  className="input__label">personal email</label>
             </div>
 
             <div>
             <i className="fa fa-key icon"></i> 
-            <input className='input' name='password' type='password' value={this.state.password} placeholder='Password' onChange={this.handleChange} required ></input>
+            <input className='input' name='password' type='password' value={this.state.password} placeholder='Password' minLength={8} onChange={this.handleChange} required ></input>
+            <label  className="input__label">minimum of 8 characters password</label>
             </div>
 
             <div>
             <i className="fa fa-key icon"></i> 
-            <input className='input' name='validPassword' type='password' value={this.state.validPassword} placeholder='Validate Password' onChange={this.handleChange} required ></input>
+            <input className='input' name='validPassword' type='password' value={this.state.validPassword} placeholder='Validate Password' minLength={8} onChange={this.handleChange} required ></input>
+            <label  className="input__label">same password</label>
             </div>
             
             <input type='submit' value='submit Form' className="button"></input>

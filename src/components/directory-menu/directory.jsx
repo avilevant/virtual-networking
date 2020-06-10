@@ -37,13 +37,13 @@ class Directory extends React.Component{
     
     
     insertImg(){
-            const bigImgDef = require('../../img/3093524.jpg')
-           return <img src={this.state.coverImg || bigImgDef} alt='user data' className='bigImg'  />
+            // const bigImgDef = require('../../img/3093524.jpg')
+           return <img src={this.state.coverImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Flaptop-1209008_1280_500x500.jpg?alt=media&token=ec7989cc-0004-42af-8608-1622835602ef"} alt='user data' className='bigImg'  />
     }
 
     insertImg1(){
-            const smallImgDef = require('../../img/IMG_0087_pp.jpg')
-           return <img src={this.state.smallImg || smallImgDef} alt='user data' className='smallImg'  />
+            // const smallImgDef = require('../../img/IMG_0087_pp.jpg')
+           return <img src={this.state.smallImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Fdog-316598_1280_500x500.jpg?alt=media&token=90842756-a430-4a93-98da-339d3ae181d1"} alt='user data' className='smallImg'  />
     }
 
    
@@ -150,13 +150,16 @@ class Directory extends React.Component{
                 
             
            <div className='view'>
-           <span >
-           <h1 className='bizzName'>{this.state.name}</h1> 
-           </span>
-                
-            <figure className='smallImgFig'>
-            {this.insertImg1()}
-            </figure>
+           <div className='smallImgFig' >
+           <div className='title'>
+           <h1>{this.state.name}</h1>
+           <h2>user name</h2>
+           </div>
+           <figure className='smallImgFigInner'>
+           {this.insertImg1()}
+           </figure>
+           
+           </div>     
            </div>
             
            <div className="button-menu">

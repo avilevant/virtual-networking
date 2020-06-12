@@ -40,6 +40,8 @@
                  border-bottom: 1px solid black;
                  margin-bottom: 35px;
                  background-color: transparent;
+                 color: black;
+                 font-weight: 500;
                  &:focus {
                      outline: none;
                      border-bottom: 2px solid #3498ff;
@@ -130,6 +132,10 @@
      @media(max-width: 800px) {
          margin-top: 40px;
      }
+ }
+ 
+ .colorIcon {
+     height: 10px;
  }
  
  //  .profile {

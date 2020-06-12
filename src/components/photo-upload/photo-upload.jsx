@@ -73,14 +73,18 @@ const UploadToFirebase =()=>{
                     })
                     .then( fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg', {
                         method: 'post',
-                        headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
+                        mode:'no-cors',
+                        // headers: {'Access-Control-Allow-Origin':'*','Content-Type': 'application/json', 'Authorization':'Bearer '+token },
+                        headers: {'Access-Control-Allow-Origin':'*' ,'Content-Type': 'text/plain', 'Authorization':'Bearer '+token },
+
                         body: JSON.stringify({
                             url1:url1,
                             url2:url2
                         })
             
                     })
-                    .then(response =>response.json())
+                    // .then(response =>response.json())
+                    .then(response =>response.text())
                     .then(data=> {
                             console.log(data)
                            

@@ -14,13 +14,12 @@ class Checkbox extends React.Component {
 
     if(!canIAdd() && !this.state.isChecked){
 
-        console.log('cant add')
         return;
     }
 
     const newState = !this.state.isChecked
     this.setState({isChecked: newState})
-    console.log('yes i can')
+    
 
     handleCheckboxChange(this.props.myId, newState);
 

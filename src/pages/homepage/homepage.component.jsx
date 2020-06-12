@@ -2,14 +2,15 @@ import React from 'react';
 import './homepage.scss';
 import Cookies from 'js-cookie';
 import BurgerMenu from '../../components/burger-menu/burger-menu';
-
-
+import image1 from '../../img/Gmail/Business_card.png';
+import image2 from '../../img/Gmail/Business_networking.png';
+import image3 from '../../img/Gmail/Making_Business.png';
 
 const logOut = () =>{
    Cookies.remove('token')
 }
 
-const mainImage1 = require('../../img/1-10.png')
+// const mainImage1 = require('../../img/1-10.png')
 // <img src={mainImage1}  alt='network' className='mainImage'/>
 
 const HomePage = () =>{
@@ -32,7 +33,7 @@ const HomePage = () =>{
 
                         <div className='content'>
                         <div  className='content-image'>
-                        <img src={mainImage1}  alt='network' className='content_smallImage' />
+                        <img src={image1}  alt='network' className='content_smallImage' />
                         </div>
                     
                         <div className='content_data'>
@@ -44,7 +45,7 @@ const HomePage = () =>{
 
                         <div className='content'>
                         <div className='content-image'>
-                        <img src={mainImage1}  alt='network' className='content_smallImage'/>
+                        <img src={image2}  alt='network' className='content_smallImage'/>
                         </div>
                     
                         <div className='content_data'>
@@ -56,7 +57,7 @@ const HomePage = () =>{
 
                         <div className='content'>
                         <div className='content-image'>
-                        <img src={mainImage1}  alt='network' className='content_smallImage' />
+                        <img src={image3}  alt='network' className='content_smallImage' />
                         </div>
                     
                         <div className='content_data'>

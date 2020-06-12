@@ -1,16 +1,17 @@
 import React from 'react';
 import {isMobile} from 'react-device-detect';
-import  img1 from '../../img/fwdnewicons/2-08.png';
-import  img2 from '../../img/fwdnewicons/2-10.png';
-import  img3 from '../../img/fwdnewicons/2-13.png';
-import  img4 from '../../img/fwdnewicons/2-12.png';
-import  img5 from '../../img/fwdnewicons/2-09.png';
-import  img6 from '../../img/img1.png';
-import  img7 from '../../img/fwdnewicons/2-11.png';
-import  img8 from '../../img/img1.png';
-import  img9 from '../../img/img1.png';
-import  img10 from '../../img/img1.png';
-import  img11 from '../../img/img1.png';
+import  img1 from '../../img/iconsfinal/1-08.png';
+import  img2 from '../../img/iconsfinal/1-10.png';
+import  img3 from '../../img/iconsfinal/1-13.png';
+import  img4 from '../../img/iconsfinal/1-12.png';
+import  img5 from '../../img/iconsfinal/1-09.png';
+import  img6 from '../../img/iconsfinal/1-14.png';
+import  img7 from '../../img/iconsfinal/1-11.png';
+import  img8 from '../../img/iconsfinal/1-17.png';
+import  img9 from '../../img/iconsfinal/1-19.png';
+import  img10 from '../../img/iconsfinal/1-15.png';
+import  img11 from '../../img/iconsfinal/1-18.png';
+import  img12 from '../../img/iconsfinal/1-16.png';
 
 
 
@@ -94,7 +95,7 @@ const CreateCardList =(props) => {
                },
                {
                    title:'FACEBOOK',
-                   icon: <ion-icon name="logo-facebook"></ion-icon>,
+                   icon:<img src={img6} alt='img6' className='svg'/>, 
                    callback: () =>window.open(props.facebook),
                    id:6
                },
@@ -107,25 +108,31 @@ const CreateCardList =(props) => {
                },
                {
                    title:'YOUTUBE',
-                   icon: <ion-icon name="logo-youtube"></ion-icon>,
+                   icon:<img src={img8} alt='img8' className='svg'/>,
                    callback: () =>window.open(props.youtube),
                    id:8
                },
                {
                    title:'INSTEGRAM',
-                   icon: <ion-icon name="logo-instagram"></ion-icon>,
+                   icon:<img src={img9} alt='img9' className='svg'/>,
                    callback: () =>window.open(props.instagram),
                    id:9
                },
                {
                    title:'LINKEDIN',
-                   icon:<ion-icon name="logo-linkedin"></ion-icon>,
+                   icon:<img src={img10} alt='img10' className='svg'/>,
                    callback: () =>window.open(props.linkedIn),
                    id:10
                },
                {
+                title:'TWITTER',
+                icon:<img src={img12} alt='img12' className='svg'/>,
+                callback: () =>window.open(props.twitter),
+                id:12
+                },
+               {
                 title:'SHARE',
-                icon:<ion-icon name="share-social-outline"></ion-icon>,
+                icon:<img src={img11} alt='img11' className='svg'/>,
                 callback: () =>navigator.share({text:'check out my e-card' ,url:props.personalprofile}) ,
                 //change later to personalprofile
                 id:11

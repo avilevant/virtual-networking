@@ -16,7 +16,8 @@ class Directory extends React.Component{
 
         this.state = {
             cards: null,
-            name:'',
+            businessName:'',
+            userName:'',
             location:'',
             phone:'',
             email:'',
@@ -25,6 +26,8 @@ class Directory extends React.Component{
             InstagramPage:'',
             youTube:'',
             linkedIn:'',
+            twitter:'',
+            jobDescription:'',
             coverImg:'null',
             smallImg:'null'
 
@@ -94,10 +97,10 @@ class Directory extends React.Component{
            if(isMobile){
              userArray.push("11")
              } 
-           console.log(userArray)
+           
            const propsForCardList = {
                personalprofile:`https://afternoon-thicket-58274.herokuapp.com/personalprofile/${C_id}`,
-               name:data.business_name,
+               businessName:data.business_name,
                location:data.business_location,
                phone:data.business_phone,
                email:data.business_email,
@@ -105,7 +108,10 @@ class Directory extends React.Component{
                facebook: data.business_facebook,
                InstagramPage:data.business_instagram,
                youtube: data.business_youtube,
-               linkedIn: data.business_linkedin
+               linkedIn: data.business_linkedin,
+               twitter:data.business_twitter,
+               jobDescription:data.jobDescription,
+               userName:data.name
            }
            const personalCards = CreateCardList(propsForCardList).filter(card=> userArray.includes(card.id.toString()));
 
@@ -115,7 +121,7 @@ class Directory extends React.Component{
            
            this.setState({
            cards:personalCards, 
-           name:data.business_name,
+           businessName:data.business_name,
            location:data.business_location,
            phone:data.business_phone,
            email:data.business_email,
@@ -124,12 +130,15 @@ class Directory extends React.Component{
            InstagramPage:data.business_instagram,
            youTube:data.business_youtube,
            linkedIn: data.business_linkedin,
+           twitter:data.business_twitter,
+           jobDescription:data.jobDescription,
            coverImg: data.business_background_pic,
-           smallImg:data.business_small_pic
+           smallImg:data.business_small_pic,
+           userName:data.name
           
         })
 
-           console.log(this.state)
+           console.log(this.state.jobDescription)
         
         })
     }
@@ -143,28 +152,30 @@ class Directory extends React.Component{
         return(
             <div className="dir">
           
-                <div className='bigImg'>
+                <div >
                 {this.insertImg()}
                 </div>
 
                 
             
-           <div className='view'>
-           <div className='smallImgFig' >
-           <div className='title'>
-           <h1>{this.state.name}</h1>
-           <h2>user name</h2>
-           </div>
-           <figure className='smallImgFigInner'>
-           {this.insertImg1()}
-           </figure>
-           
-           </div>     
-           </div>
+                            <div className='smallImgFig' >
+                               <div className='smallImgFigInner'>
+                              
+                               {this.insertImg1()}
+                               
+                               
+                             
+                               </div>
+                                        
+                                <div className='title'>
+                                <h1>{this.state.businessName}</h1>
+                                <h2>{this.state.userName }</h2><h2>{this.state.jobDescription }</h2>
+                                </div>
+                            </div>     
             
-           <div className="button-menu">
-           {this.cardRender() }
-           </div>
+                    <div className="button-menu">
+                    {this.cardRender() }
+                    </div>
              </div> 
         )}
 

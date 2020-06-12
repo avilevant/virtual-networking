@@ -46,7 +46,7 @@
             color: #ffffff;
             text-align: center;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 400;
             background-color: transparent;
             margin-top: 15px;
             @media(max-width: 800px) {
@@ -56,18 +56,18 @@
         }
     }
     
-    // ion-icon {
-    //     height: 100px;
-    //     width: 100px;
-    //     position: relative;
-    //     left: 50%;
-    //     top: 35%;
-    //     transform: translate(-50%, -50%);
-    //     background-size: contain;
-    //     //background-image: url('../../img/facebook.png');
-    //     background-color: transparent;
-    //     @media(max-width: 800px) {
-    //         height: 50px;
-    //         width: 50px;
-    //     }
-    // }
+    ion-icon {
+        height: 100px;
+        width: 100px;
+        position: relative;
+        left: 50%;
+        top: 35%;
+        transform: translate(-50%, -50%);
+        background-size: contain;
+        //background-image: url('../../img/facebook.png');
+        background-color: transparent;
+        @media(max-width: 800px) {
+            height: 50px;
+            width: 50px;
+        }
+    }

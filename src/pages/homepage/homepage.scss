@@ -39,20 +39,24 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 50px 40px;
+        margin-top: 40px;
+        h2 {
+            font-size: 36px;
+        }
         @media(max-width: 800px) {
             display: block;
-            padding: 40px 40px;
+            padding: 60px 40px;
             margin: auto;
             h2 {
                 font-size: 30px;
-                text-align: center;
             }
         }
         &_data {
             margin: 20px auto;
             margin-right: 100px;
             @media(max-width: 800px) {
-                margin: 40px auto;
+                margin: 0 auto;
+                text-align: center;
             }
         }
         &-image {
@@ -60,12 +64,14 @@
         }
         &_smallImage {
             margin: 20px auto;
+            width: 25vw;
             @media(max-width: 800px) {
                 width: 50vw;
             }
         }
         p {
             padding-top: 30px;
+            font-weight: 400;
         }
     }
 }

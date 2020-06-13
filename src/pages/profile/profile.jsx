@@ -42,7 +42,7 @@ class Profile extends React.Component{
             U_name:'',
             step:0,
             message:'first step',
-            jobDescription:''
+            jobdescription:''
         }
         
         
@@ -58,7 +58,7 @@ class Profile extends React.Component{
         // const C_id =  Cookies.get('C_id')
         console.log(C_name)
         this.setState({U_name:C_name})
-
+        
         
         fetch(`https://afternoon-thicket-58274.herokuapp.com/profile/`,{
             method: 'get',
@@ -68,20 +68,20 @@ class Profile extends React.Component{
         .then((data)=>{
             
             this.setState({
-            arrayOfCards:data.business_arrayofcards, 
-            name:data.business_name,
-            location:data.business_location,
-            phone:data.business_phone,
-            email:data.business_email,
-            website:data.business_website,
-            faceBookPage:data.business_facebook,
-            InstagramPage:data.business_instagram,
-            youTube:data.business_youtube,
-            linkedIn: data.business_linkedin,
+            arrayOfCards:data.business_arrayofcards||'', 
+            name:data.business_name||'',
+            location:data.business_location||'',
+            phone:data.business_phone||'',
+            email:data.business_email||'',
+            website:data.business_website||'',
+            faceBookPage:data.business_facebook||'',
+            InstagramPage:data.business_instagram||'',
+            youTube:data.business_youtube||'',
+            linkedIn: data.business_linkedin||'',
             coverImg: data.business_background_pic,
             smallImg:data.business_small_pic,
-            twitter:data.business_twitter,
-            jobDescription:data.jobDescription
+            twitter:data.business_twitter||'',
+            jobdescription:data.jobdescription||''
             
             })
             
@@ -97,7 +97,7 @@ class Profile extends React.Component{
         const C_id =  Cookies.get('C_id')
         const token =  Cookies.get('token')
         // const C_id = Cookies.get('C_id')
-        console.log(this.state.jobDescription)
+        console.log(this.state.jobdescription)
         console.log(token)
         fetch('https://afternoon-thicket-58274.herokuapp.com/profile', {
             method: 'post',
@@ -116,7 +116,7 @@ class Profile extends React.Component{
                 mybizz:this.state.mybizz,
                 BizzNetArray:this.state.BizzNetArray,
                 twitter:this.state.twitter,
-                jobDescription:this.state.jobDescription
+                jobdescription:this.state.jobdescription
                })
 
         })
@@ -133,7 +133,7 @@ class Profile extends React.Component{
       
     
 
-    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:'',twitter:'',jobDescription:''})
+    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:'',twitter:'',jobdescription:''})
     
     
 
@@ -144,7 +144,7 @@ class Profile extends React.Component{
         
         this.setState({[name]:value})
         console.log(name,value)
-        console.log(this.state.jobDescription)
+        console.log(this.state.jobdescription)
 
     }
 
@@ -236,6 +236,7 @@ class Profile extends React.Component{
    
     checkCanIAdd = ()=>{
         if(this.state.arrayOfCards.length+1 >numberOfCards){
+            console.log('test')
             return false
         }else{
             return true
@@ -352,7 +353,7 @@ class Profile extends React.Component{
                         <div>
                         <img src={imgAstrix} alt='astix' className='colorIcon'/>
                         <i className="fa fa-user-circle icon icon-1"></i> 
-                        <input className='input' name='jobDescription' type='text' value={this.state.jobDescription||''} placeholder='job Description' 
+                        <input className='input' name='jobdescription' type='text' value={this.state.jobdescription} placeholder='job Description' 
                         onChange={this.handleChange} required ></input>
                         </div>
                       

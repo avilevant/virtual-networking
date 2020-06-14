@@ -97,7 +97,7 @@ class Directory extends React.Component{
              } 
            
            const propsForCardList = {
-                personalprofile:`https://afternoon-thicket-58274.herokuapp.com/personalprofile/${uId}`,
+                personalprofile:`https://virtual-networking.herokuapp.com/personalprofile/${uId}`,
                 businessName:data.business_name,
                 location:data.business_location,
                 phone:data.business_phone,

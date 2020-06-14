@@ -11,7 +11,7 @@ const BusinessList = [
     },
     {
         id:3,
-        label:'send the business a whatsApp Message'
+        label:'send the business a whatsApp'
     },
     {
         id:4,
@@ -41,6 +41,10 @@ const BusinessList = [
         id:10,
         label:'watch the business linkedIn page'
     },
+    {
+        id:12,
+        label:'watch the business twitter page'
+    }
 
 ]
  

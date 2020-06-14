@@ -6,7 +6,6 @@ import SignUpPage from './pages/signup-page/signup-page';
 import SignInPage from './pages/signin-page/signin-page';
 import Profile from './pages/profile/profile';
 import PersonalProfile from './pages/personal-profile/personal-profile';
-// import BurgerMenu from './components/burger-menu/burger-menu';
 import UploadToFirebase from './components/photo-upload/photo-upload'
 
 

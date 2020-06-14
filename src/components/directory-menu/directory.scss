@@ -6,7 +6,7 @@
    .dir {
        height: 100vh;
        display: grid;
-       grid-template-rows: 48vh 22vh 30vh;
+       grid-template-rows: 49vh 22vh 29vh;
        @media(max-width: 800px) {
            grid-template-rows: 36vh 19vh 45vh;
        }
@@ -27,6 +27,9 @@
            }
        }
        .title {
+           h1 {
+               font-size: 43px;
+           }
            @media(max-width: 800px) {
                line-height: 40px;
                padding-left: 10px;
@@ -99,7 +102,7 @@
                grid-template-rows: repeat(3, 1fr);
                grid-template-columns: repeat(3, 1fr);
                margin: auto;
-               height: 40vh;
+               height: 45vh;
            }
        }
    }

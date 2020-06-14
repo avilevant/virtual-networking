@@ -93,11 +93,6 @@ const UploadToFirebase =()=>{
         }
         )})
        
-
-
-        // props.history.push(`personalprofile/${C_id}`);
-        //pass the urls to profile for single upload command
-        // props.onClick(url1,url2)
         
     }
     

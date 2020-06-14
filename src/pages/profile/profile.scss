@@ -1,8 +1,10 @@
  .form {
-     width: 60vw;
+     font-family: 'Montserrat', sans-serif;
+     width: 65vw;
      margin: 1% auto;
      .rs-panel-heading {
          padding: 0;
+         font-size: 14px;
      }
      @media(max-width: 800px) {
          width: 90vw;
@@ -10,11 +12,6 @@
      }
  }
  
- //  .rs-steps-item-title {
- //      @media(max-width: 800px) {
- //          display: none;
- //      }
- //  }
  .rs-btn.rs-btn-default {
      background-color: #3498ff;
      color: white;
@@ -22,16 +19,21 @@
  
  .rs-panel-body {
      @media(min-width: 800px) {
-         height: 60vh;
+         height: 58vh;
+         padding-bottom: 10px;
      }
      .first-col {
          text-align: center;
          @media(max-width: 800px) {
              margin-bottom: 30px;
          }
-         .first-col-split {
+         &-split1 {
              display: grid;
              grid-template-columns: 1fr 1fr 1fr;
+             font-family: 'Open_Sans', sans-serif;
+              ::placeholder {
+                 color: rgb(187, 187, 198);
+             }
              @media(max-width: 800px) {
                  display: inline;
              }
@@ -52,22 +54,56 @@
                  background-color: transparent;
              }
          }
-         .input {
-             border: none;
-             border-bottom: 1px solid black;
-             margin-bottom: 35px;
-             background-color: transparent;
-         }
-         .icon {
-             min-width: 40px;
-             background-color: transparent;
+         &-split2 {
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             //  font-family: 'Open_Sans', sans-serif;
+             @media(max-width: 800px) {
+                 display: inline;
+             }
+              ::placeholder {
+                 color: rgb(187, 187, 198);
+             }
+             .business-inputs {
+                 margin-bottom: 50px;
+             }
+             .inputData {
+                 outline: none;
+                 border: 1px solid #c4bbbb;
+                 padding: 10px;
+                 margin-bottom: 10px;
+                 height: 200px;
+                 width: 60%;
+                 border-radius: 4px;
+             }
+             .chose-my-business {
+                 position: relative;
+                 outline: none;
+                 border: 1px solid rgb(196, 187, 187);
+                 padding: 10px;
+                 margin-bottom: 10px;
+                 height: 40px;
+                 width: 60%;
+                 border-radius: 4px;
+                 appearance: none;
+                 background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+                 background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+                 background-size: 5px 5px, 5px 5px, 1px 1.5em;
+                 background-repeat: no-repeat;
+                 .option {
+                     color: rgb(179, 174, 174);
+                     &-1 {
+                         color: black;
+                     }
+                 }
+             }
          }
          .header,
          h1 {
              color: #3498ff;
              margin-top: 0px;
-             margin-bottom: 30px;
-             font-size: 25px;
+             margin-bottom: 20px;
+             font-size: 20px;
              @media(max-width: 800px) {
                  font-size: 16px;
                  margin-bottom: 20px;
@@ -76,33 +112,13 @@
          }
          .choseCards {
              display: grid;
-             grid-template-columns: 1fr 1fr;
+             grid-template-columns: 1fr 1fr 1fr;
+             font-family: 'Open_Sans', sans-serif;
              @media(max-width: 800px) {
                  display: inline;
              }
              .card {
                  margin-bottom: 30px;
-             }
-         }
-         .chose-my-business {
-             position: relative;
-             outline: none;
-             border: 1px solid rgb(196, 187, 187);
-             padding: 10px;
-             margin-bottom: 10px;
-             height: 40px;
-             width: 60%;
-             border-radius: 4px;
-             appearance: none;
-             background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
-             background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
-             background-size: 5px 5px, 5px 5px, 1px 1.5em;
-             background-repeat: no-repeat;
-             .option {
-                 color: rgb(179, 174, 174);
-                 &-1 {
-                     color: black;
-                 }
              }
          }
      }
@@ -138,99 +154,15 @@
      height: 10px;
  }
  
- //  .profile {
- //      // position: absolute;
- //      margin: auto;
- //      padding: 50px;
- //      // grid-template-rows: repeat(minmax(200px, 1fr));
- //      display: grid;
- //      grid-template-columns: 1fr 1fr 1fr;
- //      @media(max-width: 800px) {
- //          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
- //          font-size: 14px;
- //          margin-bottom: 20px;
- //      }
- //      // grid-template-columns: repeat(minmax(200px, 1fr));
- //      .header,
- //      h1 {
- //          margin-top: 40px;
- //          margin-bottom: 30px;
- //          font-size: 25px;
- //          @media(max-width: 800px) {
- //              font-size: 14px;
- //              margin-bottom: 20px;
- //          }
- //      }
- //      .first-col {
- //          padding: 20px;
- //          background-color: rgb(236, 232, 232);
- //          border: 1px solid gray;
- //          margin: 0 10px;
- //          @media(max-width: 800px) {
- //              margin-bottom: 30px;
- //          }
- //          .input {
- //              border: none;
- //              border-bottom: 2px solid black;
- //              margin-bottom: 35px;
- //              background-color: transparent;
- //          }
- //          .icon {
- //              min-width: 40px;
- //              background-color: transparent;
- //          }
- //      }
- //      .second-col {
- //          padding: 20px;
- //          background-color: rgb(236, 232, 232);
- //          border: 1px solid gray;
- //          margin: 0 10px;
- //          @media(max-width: 800px) {
- //              margin-bottom: 30px;
- //          }
- //          .chose-my-business {
- //              position: relative;
- //              outline: none;
- //              border: 1px solid rgb(196, 187, 187);
- //              padding: 10px;
- //              margin-bottom: 10px;
- //              height: 40px;
- //              width: 60%;
- //              border-radius: 4px;
- //              appearance: none;
- //              background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
- //              background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
- //              background-size: 5px 5px, 5px 5px, 1px 1.5em;
- //              background-repeat: no-repeat;
- //              .option {
- //                  color: rgb(179, 174, 174);
- //                  &-1 {
- //                      color: black;
- //                  }
- //              }
- //          }
- //      }
- //      .drop-my-business {
- //          margin-bottom: 20px;
- //      }
- //  }
- //  .last-col {
- //      padding: 20px;
- //      background-color: rgb(236, 232, 232);
- //      margin: 0 10px;
- //      border: 1px solid gray;
- //      @media(max-width: 800px) {
- //          margin-bottom: 30px;
- //      }
- //  }
  .username {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 30px;
      position: relative;
      text-align: center;
      margin-top: 0px;
      padding: 2%;
-     // left: 34%;
      @media(max-width: 800px) {
-         font-size: 18px;
+         font-size: 17px;
          padding-top: 40px;
      }
  }

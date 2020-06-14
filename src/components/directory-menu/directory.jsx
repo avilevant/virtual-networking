@@ -34,7 +34,8 @@ class Directory extends React.Component{
             coverImg:'null',
             smallImg:'null',
             popInfo:'false',
-            id:props.id
+            id:props.id,
+            userData:''
         }
        
     }
@@ -110,6 +111,7 @@ class Directory extends React.Component{
                 twitter:data.business_twitter,
                 jobDescription:data.jobdescription,
                 userName:data.name
+                
            }
 
     //using data to upload to cardlist for rendering       
@@ -130,7 +132,8 @@ class Directory extends React.Component{
                 jobDescription:data.jobdescription,
                 coverImg: data.business_background_pic,
                 smallImg:data.business_small_pic,
-                userName:data.name
+                userName:data.name,
+                userData:data.userdata
                 
                 })
         })
@@ -165,7 +168,7 @@ class Directory extends React.Component{
                     </div>
                 </div>   
 
-                <DataPop location={this.state.location} phone={this.state.phone} show={this.state.popInfo}/>
+                <DataPop location={this.state.location} phone={this.state.phone} show={this.state.popInfo} info={this.state.userData} />
 
                 <div className="button-menu">
                 {this.cardRender() }

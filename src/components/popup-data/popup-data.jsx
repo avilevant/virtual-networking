@@ -16,7 +16,7 @@ const DataPop = (props) =>{
         <h2>Phone: {props.phone}</h2>
         <hr/>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nihil voluptatem molestiae, fugit, doloribus aspernatur provident voluptatum explicabo numquam cumque ex vitae ipsum! Tempore exercitationem omnis officia nam placeat voluptas?</p>
+        <p>{props.info}</p>
         </div>
     )
 

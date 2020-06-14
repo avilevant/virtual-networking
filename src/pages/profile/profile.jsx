@@ -41,8 +41,9 @@ class Profile extends React.Component{
             list:BusinessList,
             U_name:'',
             step:0,
-            message:'first step',
-            jobdescription:''
+            message:'fill in all the fields, the ones marked with a red star are a must',
+            jobdescription:'',
+            userData:''
         }
         
         
@@ -81,8 +82,8 @@ class Profile extends React.Component{
             coverImg: data.business_background_pic,
             smallImg:data.business_small_pic,
             twitter:data.business_twitter||'',
-            jobdescription:data.jobdescription||''
-            
+            jobdescription:data.jobdescription||'',
+            userData:data.userdata||''
             })
             
 
@@ -116,7 +117,8 @@ class Profile extends React.Component{
                 mybizz:this.state.mybizz,
                 BizzNetArray:this.state.BizzNetArray,
                 twitter:this.state.twitter,
-                jobdescription:this.state.jobdescription
+                jobdescription:this.state.jobdescription,
+                userData:this.state.userData
                })
 
         })
@@ -133,7 +135,7 @@ class Profile extends React.Component{
       
     
 
-    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:'',twitter:'',jobdescription:''})
+    this.setState({name:'',location:'',phone:'',email:'',website:'',faceBookPage:'',InstagramPage:'',youTube:'', arrayOfCards:[], mybizz:'',twitter:'',jobdescription:'',userData:''})
     
     
 
@@ -152,13 +154,13 @@ class Profile extends React.Component{
 
     onChangeStep = nextStep => {
         if (nextStep<=0){
-            this.setState({step:0,message:'first step'})
+            this.setState({step:0,message:'fill in all the fields you can, the ones marked with a red star are a must'})
         }else if(nextStep>=3){
-            this.setState({step:3, message:'last step'})
+            this.setState({step:3, message:'choose the images that will serve you best'})
         }else if(nextStep===1){
-            this.setState({step:1,message:'second step'})
+            this.setState({step:1,message:'start building your network, and tell us more about yourself'})
         }else if(nextStep===2){
-            this.setState({step:2,message:'theird step'})
+            this.setState({step:2,message:'choose 8 cards for best display'})
         }
     }
    
@@ -236,8 +238,7 @@ class Profile extends React.Component{
    
     checkCanIAdd = ()=>{
         if(this.state.arrayOfCards.length+1 >numberOfCards){
-            console.log('test')
-            return false
+           return false
         }else{
             return true
         }
@@ -276,16 +277,30 @@ class Profile extends React.Component{
             switch(step) {
                 case 1:
                   return(
-                    <div className='first-col'>
-                
-                    <div>
-                    <h1 className="header" >choose your field of business</h1>
-                        {this.chooseMyBiz()}
-                    <h1 className="header">build your network!</h1>
-                    <DropSelect  importData={this.FuncBizzNetArray}/>  
-                    </div>
 
-                </div>
+                    <div className='first-col'>
+                    
+                        <div className='first-col-split2'>
+                    
+                            <div className='business-inputs'>
+                            <h1 className="header" >choose your field of business</h1>
+                                {this.chooseMyBiz()}
+                            <br/>
+                            <br/>
+
+                            <h1 className="header">build your network!</h1>
+                            <DropSelect  importData={this.FuncBizzNetArray}/>  
+                            </div>
+
+                            <div>
+                            <h1 className="header">about you&your business</h1>
+                            <textarea className='inputData' name="userData" cols="60" rows="10" value={this.state.userData} placeholder='write here a few words about your self and your business' onChange={this.handleChange} required></textarea>
+                            
+                            </div>
+
+                        </div>
+                    
+                    </div>
                   )  
                   
                 case 2:
@@ -314,7 +329,7 @@ class Profile extends React.Component{
                     return(
                     <div className='first-col'>
                     <h1 className="header" >Enter your business information</h1>
-                    <div className='first-col-split'> 
+                    <div className='first-col-split1'> 
 
                         <div className='first-col-1'>
                         

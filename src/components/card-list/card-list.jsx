@@ -133,7 +133,7 @@ const CreateCardList =(props) => {
                {
                 title:'SHARE',
                 icon:<img src={img11} alt='img11' className='svg'/>,
-                callback: () =>navigator.share({text:'check out my e-card' ,url:props.personalprofile}) ,
+                callback: () =>navigator.share({url:props.personalprofile}) ,
                 //change later to personalprofile
                 id:11
             }    

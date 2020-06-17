@@ -1,9 +1,9 @@
 import React from 'react';
 import './sign-in.scss';
 import {withRouter} from 'react-router-dom';
-import signinPic from '../../img/3094352.jpg';
+import signinPic from '../../img/graphics/sign in.png';
 import Cookies from 'js-cookie';
-
+import Button from '../button/button';
   
 
 class SignIn extends React.Component{
@@ -72,7 +72,7 @@ class SignIn extends React.Component{
             
             <div className="container">
                  
-            <div className='sign-in'>
+            <div className='signForm'>
            
             <h1 className="header" >Sign In</h1>
             <form onSubmit={this.handleSubmit}>
@@ -87,7 +87,9 @@ class SignIn extends React.Component{
             <input className='input' name='password' type='password' value={this.state.password} placeholder='password' minLength={8} onChange={this.handleChange} required ></input>
             <label  className="input__label">your password</label>
             </div>
-            <input type='submit' value='submit Form' className='button'></input>
+           
+
+            <Button type='submit'>Lets Go!</Button>
             </form>
 
             </div>

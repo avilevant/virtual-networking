@@ -2,22 +2,17 @@ import React from 'react';
 import './homepage.scss';
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom'
-import BurgerMenu from '../../components/burger-menu/burger-menu';
 import image1 from '../../img/updatediconsforhomapage/4-30.png';
 import image2 from '../../img/updatediconsforhomapage/4-31.png';
 import image3 from '../../img/updatediconsforhomapage/4-32.png';
+import Toolbar from '../../components/toolbar/toolbar';
+
 
 const logOut = () =>{
    Cookies.remove('token')
 }
 
 
-
-
-
-
-// const mainImage1 = require('../../img/1-10.png')
-// <img src={mainImage1}  alt='network' className='mainImage'/>
 
 const HomePage = () =>{
     logOut()
@@ -33,8 +28,9 @@ const HomePage = () =>{
         <div>
         
         
-        <BurgerMenu/>
-       
+        
+        <Toolbar/>
+        
             <div className="homepage">
                     <div className='mainImage' >
                     
@@ -83,7 +79,7 @@ const HomePage = () =>{
                     
                         <div className='content_data'>
                         <h2>Start Making Business</h2>
-                        <p>If you want to build and grow your business, this is the time to build your digital card and start networking.<br/>
+                        <p>If you want to build and grow your business, this is the time to build your digital card and start networking.
                         use the power of the web for your benefit. the world is at the tip fo your fingers. register and fill up all the details, and the network will build it self for you. use it when, how and if you want. <br/> <br/>  GOOD LUCK!!!
                         </p>
                         <button onClick={register}>Register Now</button>

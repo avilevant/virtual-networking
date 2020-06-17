@@ -4,8 +4,13 @@ body {
     /* font-family: 'Montserrat', 'Open_Sans'; */
     font-family: 'Montserrat', sans-serif;
     font-family: 'Open Sans', sans-serif;
+    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    height: 100%;
 }
 
 code {

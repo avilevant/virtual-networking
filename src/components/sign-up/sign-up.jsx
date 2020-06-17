@@ -3,6 +3,8 @@ import './sign-up.scss';
 import {withRouter} from 'react-router-dom';
 import signupPic from '../../img/2853458.jpg';
 import Cookies from 'js-cookie';
+import Button from '../button/button';
+
 
 
 class SignUp extends React.Component{
@@ -76,8 +78,8 @@ class SignUp extends React.Component{
 
     render(){
         return(
-         <div className="container1">  
-            <div className='sign-up'>
+         <div className="container">  
+            <div className='signForm'>
             <h1 className="header">Sign Up</h1>
             <form onSubmit={this.handleSubmit}>
             
@@ -111,7 +113,7 @@ class SignUp extends React.Component{
             <label  className="input__label">same password</label>
             </div>
             
-            <input type='submit' value='submit Form' className="button"></input>
+            <Button type='submit'>Register!</Button>
             </form>
 
             </div>

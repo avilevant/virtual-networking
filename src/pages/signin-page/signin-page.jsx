@@ -1,14 +1,14 @@
 import React from 'react';
 import './signin-page.scss';
 import SignIn from '../../components/sign-in/sign-in'
-import BurgerMenu from '../../components/burger-menu/burger-menu';
+import Toolbar from '../../components/toolbar/toolbar';
 
 const SignInPage = ()=>{
 
 
     return(
         <div>
-        <BurgerMenu/>
+        <Toolbar/>
         
         <div className='sign' >
         <SignIn/>

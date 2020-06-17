@@ -6,17 +6,19 @@ import BusinessList from '../../components/business-list/business-list';
 import {OccupationList} from '../../components/occupationlist/occupationlist';
 import {withRouter} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import BurgerMenu from '../../components/burger-menu/burger-menu';
 import { Steps,Panel,ButtonGroup,Button } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
-import UploadToFirebase from '../../components/photo-upload/photo-upload'
+import UploadToFirebase from '../../components/photo-upload/photo-upload';
 import  imgAstrix from '../../img/fwdnewicons/ambulance.png';
+import Toolbar from '../../components/toolbar/toolbar';
+
+
+
 
 
 
 
 const numberOfCards = 8
-
 
 
 class Profile extends React.Component{
@@ -191,7 +193,7 @@ class Profile extends React.Component{
     }
 
     
-
+    
 
     // BizzNetMember: array of strings, each is a business label
     FuncBizzNetArray = (BizzNetMember)=>{
@@ -268,7 +270,7 @@ class Profile extends React.Component{
       )  
 
           
-   
+    //   <DropSelect  importData={this.FuncBizzNetArray}/>  
     
         renderDisplay(){
             let step = this.state.step
@@ -289,6 +291,7 @@ class Profile extends React.Component{
                             <br/>
 
                             <h1 className="header">build your network!</h1>
+                           
                             <DropSelect  importData={this.FuncBizzNetArray}/>  
                             </div>
 
@@ -423,7 +426,7 @@ class Profile extends React.Component{
 render(){
  return(
     <div>
-    <BurgerMenu/>
+    <Toolbar/>
 
     <h1 className='username'>Hi {this.state.U_name}, Build Your Business Profile</h1>
         <form onSubmit={this.handleSubmit} className='form'>

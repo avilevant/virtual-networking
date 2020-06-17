@@ -1,0 +1,28 @@
+.button {
+    background-color: #33CCFF;
+    border-radius: 30px;
+    // border: 1px solid #102e07;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 12px 44px;
+    text-decoration: none;
+    // box-shadow: 3px 4px 0px 0px rgb(181, 207, 243);
+    margin-top: 80px;
+    &:hover {
+        background-color: white;
+        color: rgb(51, 204, 255);
+        transform: translateY(-10px) scale(1.05);
+        transition: .5s;
+    }
+    &:active {
+        position: relative;
+        top: 3px;
+    }
+    @media(max-width: 800px) {
+        margin-top: 40px;
+        // font-size: 10px;
+    }
+}

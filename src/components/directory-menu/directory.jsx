@@ -5,6 +5,7 @@ import CreateCardList from '../card-list/card-list';
 import {isMobile} from 'react-device-detect';
 import DataPop from '../popup-data/popup-data';
 import ToggleButton from '../toogle-button/toogle-button';
+import Toolbar from '../../components/toolbar/toolbar';
 import image1 from '../../img/info/info-24.png';
 import image2 from '../../img/info/info-25.png';
 
@@ -41,6 +42,9 @@ class Directory extends React.Component{
     }
 
     
+
+    
+
     //images - big image and small logo
     insertImg(){
            return <img src={this.state.coverImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Flaptop-1209008_1280_500x500.jpg?alt=media&token=ec7989cc-0004-42af-8608-1622835602ef"} alt='user data' className='bigImg'  />
@@ -49,6 +53,8 @@ class Directory extends React.Component{
     insertImg1(){
            return <img src={this.state.smallImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Fdog-316598_1280_500x500.jpg?alt=media&token=90842756-a430-4a93-98da-339d3ae181d1"} alt='user data' className='smallImg'  />
     }
+
+
 
    
     //expended information about user
@@ -144,6 +150,11 @@ class Directory extends React.Component{
     render(){
 
         return(
+
+            <div>
+            <Toolbar name= {this.state.businessName} image={this.state.smallImg} />
+            
+            
             <div className="dir">
           
                 <div >
@@ -158,7 +169,7 @@ class Directory extends React.Component{
                     </div>
                             
                     <div className='title'>
-                    <h1>{this.state.businessName}</h1>
+                    
                     <h2>{this.state.userName }</h2>
                     <h2>{this.state.jobDescription }</h2>
                     </div>
@@ -174,6 +185,7 @@ class Directory extends React.Component{
                 {this.cardRender() }
                 </div>
             </div> 
+            </div>
         )}
 
 }

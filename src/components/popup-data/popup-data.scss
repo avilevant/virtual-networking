@@ -5,7 +5,8 @@
     height: 29.5vh;
     padding-top: 20px;
     background-color: white;
-    position: absolute;
+    position: fixed;
+    left: 0;
     bottom: 0px;
     z-index: 200;
     transform: translateX(-100%);
@@ -14,9 +15,9 @@
         transform: translateX(0);
     }
     @media(max-width: 800px) {
-        display: inline;
+        display: inline-block;
         padding-top: 10%;
-        height: 35vh;
+        height: 47vh;
     }
     .info {
         display: block;
@@ -36,8 +37,8 @@
             padding: 5% 20%;
         }
     }
-    @media(max-width: 800px) {
-        height: 47vh;
+    @media(max-width: 400px) {
+        height: 43vh;
     }
     hr {
         margin-top: 0;

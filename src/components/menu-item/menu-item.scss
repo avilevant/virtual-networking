@@ -9,13 +9,6 @@
         @media(max-width: 800px) {
             border-radius: 50%;
         }
-        //  background-size: auto;
-        // &:first-child {
-        //     margin-right: 20px;
-        // }
-        // &:last-child {
-        //     margin-right: 20px;
-        // }
         .item-logo {
             height: 90px;
             width: 90px;
@@ -32,6 +25,11 @@
                 z-index: 100;
                 left: 58%;
                 top: 35%;
+            }
+            @media(max-width: 400px) {
+                height: 40px;
+                width: 40px;
+                left: 45%;
             }
         }
         .svg {
@@ -64,10 +62,13 @@
         top: 35%;
         transform: translate(-50%, -50%);
         background-size: contain;
-        //background-image: url('../../img/facebook.png');
         background-color: transparent;
         @media(max-width: 800px) {
             height: 50px;
             width: 50px;
+        }
+        @media(max-width: 400px) {
+            height: 40px;
+            width: 40px;
         }
     }

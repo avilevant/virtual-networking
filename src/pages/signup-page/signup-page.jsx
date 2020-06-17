@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUp from '../../components/sign-up/sign-up';
-import BurgerMenu from '../../components/burger-menu/burger-menu';
+import Toolbar from '../../components/toolbar/toolbar';
 
 
 
@@ -8,7 +8,7 @@ const SignUpPage = () =>{
 
     return(
         <div>
-        <BurgerMenu/>
+        <Toolbar/>
         <div className='sign'>
         <SignUp/>
         </div>

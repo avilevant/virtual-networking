@@ -41,14 +41,24 @@ const UploadToFirebase =()=>{
         }
     }
      
-    const files =[image,image2]
-    
+    const filesToUpdate = [
+    {
+        image: image,
+        setUrl: setUrl1, 
+        index: 1
+    },
+    {
+        image: image2,
+        setUrl: setUrl2,
+        index: 2
+    }]
+
 //upload both images
     const handleUpload = (props) =>{
         
         
-        files.forEach(file=>{
-            const uploadTask = storage.ref(`images/${file.name}`).put(file);
+        filesToUpdate.forEach(fileToUpdate=>{
+            const uploadTask = storage.ref(`images/${fileToUpdate.image.name}`).put(fileToUpdate.image);
 
         uploadTask.on(
             "state_changed",
@@ -63,23 +73,19 @@ const UploadToFirebase =()=>{
                 //get url from storage for reference
                 storage
                     .ref('images')
-                    .child(file.name)
+                    .child(fileToUpdate.image.name)
                     .getDownloadURL()
                     .then(url=>{
-                       
-                            url1===''?setUrl1(url):setUrl2(url)
+                       console.log('before updating url: ' ,'url: ' ,url)
+                           fileToUpdate.setUrl(url);
                         
-                         
+                        return (url);
                     })
-                    .then( fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg', {
+                    .then( url=> fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg/' + fileToUpdate.index, {
                         method: 'post',
-                        mode:'no-cors',
-                        // headers: {'Access-Control-Allow-Origin':'*','Content-Type': 'application/json', 'Authorization':'Bearer '+token },
-                        headers: {'Access-Control-Allow-Origin':'*' ,'Content-Type': 'text/plain', 'Authorization':'Bearer '+token },
-
+                        headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
                         body: JSON.stringify({
-                            url1:url1,
-                            url2:url2
+                            url:url
                         })
             
                     })

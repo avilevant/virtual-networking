@@ -10,6 +10,7 @@ import Toolbar from '../../components/toolbar/toolbar';
 
 const logOut = () =>{
    Cookies.remove('token')
+   Cookies.remove('C_img')
 }
 
 

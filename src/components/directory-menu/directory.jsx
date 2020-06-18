@@ -6,6 +6,7 @@ import {isMobile} from 'react-device-detect';
 import DataPop from '../popup-data/popup-data';
 import ToggleButton from '../toogle-button/toogle-button';
 import Toolbar from '../../components/toolbar/toolbar';
+import Cookies from 'js-cookie';
 import image1 from '../../img/info/info-24.png';
 import image2 from '../../img/info/info-25.png';
 
@@ -94,6 +95,9 @@ class Directory extends React.Component{
     componentDidMount(){
         const uId = this.state.id
         
+
+
+
         fetch(`https://afternoon-thicket-58274.herokuapp.com/personalprofile/${uId}`)
         .then(response => response.json())
         .then((data)=>{
@@ -123,6 +127,9 @@ class Directory extends React.Component{
     //using data to upload to cardlist for rendering       
            const personalCards = CreateCardList(propsForCardList).filter(card=> userArray.includes(card.id.toString()));
 
+           Cookies.set('C_img',data.business_small_pic)
+           const C_img = Cookies.get('C_img') 
+
                 this.setState({
                 cards:personalCards, 
                 businessName:data.business_name,
@@ -137,7 +144,7 @@ class Directory extends React.Component{
                 twitter:data.business_twitter,
                 jobDescription:data.jobdescription,
                 coverImg: data.business_background_pic,
-                smallImg:data.business_small_pic,
+                smallImg:C_img,
                 userName:data.name,
                 userData:data.userdata
                 
@@ -152,7 +159,7 @@ class Directory extends React.Component{
         return(
 
             <div>
-            <Toolbar name= {this.state.businessName} image={this.state.smallImg} />
+            <Toolbar name= {this.state.businessName} />
             
             
             <div className="dir">

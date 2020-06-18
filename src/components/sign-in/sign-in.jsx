@@ -4,6 +4,9 @@ import {withRouter} from 'react-router-dom';
 import signinPic from '../../img/graphics/sign in.png';
 import Cookies from 'js-cookie';
 import Button from '../button/button';
+import { Loader } from 'rsuite';
+
+
   
 
 class SignIn extends React.Component{
@@ -12,16 +15,11 @@ class SignIn extends React.Component{
 
     this.state = {
         email:'',
-        password:''
+        password:'',
+        loading:false
     } 
 } 
 
-    // returnId(id){
-    //   return(
-    //       <Directory userId={id}/>
-    //   )
-        
-    // }
      
     handleSubmit = (event) => {
         event.preventDefault();
@@ -43,8 +41,9 @@ class SignIn extends React.Component{
                 Cookies.set('token',data.token)
                 Cookies.set('C_name',data.user.name)
                 Cookies.set('C_id',data.user.id)
-                
+                this.setState({loading:true})
                 this.props.history.push(`/personalprofile/${data.user.id}`); 
+                
                 // this.returnId(data.id)
             } else (
                     prompt('user name or password incorrect')
@@ -66,7 +65,15 @@ class SignIn extends React.Component{
         this.setState({[name]:value})
     }
 
+    spinner=()=>{
+        if(this.state.loading===true){
+            return <Loader/>
+        }
+    }
+
     render(){
+
+        
         return(
             <div>
             
@@ -94,6 +101,7 @@ class SignIn extends React.Component{
 
             </div>
             <img src={signinPic} className="img" alt="signin"></img> 
+            {this.spinner}
         </div>
             </div>
        

@@ -97,7 +97,7 @@ class Toolbar extends React.Component{
             <div>
             
             
-            <SideMenu burgerOpen={this.state.menuWindowOpen} sideImg={this.props.image}/>
+            <SideMenu burgerOpen={this.state.menuWindowOpen}/>
             <header className='toolbar'>
                 <nav className='toolbar-nav'>
                     

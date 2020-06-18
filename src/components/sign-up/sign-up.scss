@@ -17,14 +17,8 @@
     .img {
         height: 60%;
         margin: auto;
-        @media(max-width: 800px) {
-            height: 100%;
-            width: 100%;
-            margin: auto;
-            opacity: .5;
-        }
-        @media(max-width: 400px) {
-            padding-top: 50px;
+        @media(max-width: 600px) {
+            visibility: hidden;
         }
     }
     .signForm {
@@ -50,7 +44,7 @@
             color: rgb(234, 247, 243);
             background-color: transparent;
             border-bottom: 1px solid white;
-            margin: 10px 0;
+            margin: 5px 0;
             &:focus {
                 outline: none;
                 border-bottom: 2px solid #33CCFF;
@@ -68,7 +62,7 @@
             font-size: 13px;
             color: rgb(204, 201, 201);
             margin-left: 40px;
-            margin-bottom: 10px;
+            // margin-bottom: 10px;
             display: block;
             transition: all .3s;
         }

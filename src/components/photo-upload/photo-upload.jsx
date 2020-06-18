@@ -7,12 +7,12 @@ import Cookies from 'js-cookie';
 
   
 
-const UploadToFirebase =()=>{
+const UploadToFirebase =(props)=>{
     
     const [image,setImage]=useState(null);
     const [image2,setImage2]=useState(null);
-    const [url1,setUrl1]=useState('');
-    const [url2,setUrl2]=useState('');
+    const [url1,setUrl1]=useState(props.cover||'');
+    const [url2,setUrl2]=useState(props.small||'');
     const [progress, setProgress] = useState(0)
     const token =  Cookies.get('token')
    

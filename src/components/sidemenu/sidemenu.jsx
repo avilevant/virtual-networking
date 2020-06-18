@@ -7,7 +7,7 @@ import signOut from '../../img/menuicons/Icons for dror-50.png';
 import home from '../../img/menuicons/Icons for dror-53.png';
 import myProfile from '../../img/menuicons/Icons for dror-55.png';
 import editProfile from '../../img/menuicons/Icons for dror-50 new-55.png';
-
+import userIcon from '../../img/hamburger/User icon.png'
 
 
 
@@ -98,7 +98,7 @@ class SideMenu extends React.Component{
           
                          
           <div className='smallImgFigInner1'>
-          <img src={C_img||myProfile} alt='user' className='smallImg1'  /> 
+          <img src={C_img||userIcon} alt='user' className='smallImg1'  /> 
           </div>
           <div className='userName'>{this.state.userName}</div>
 

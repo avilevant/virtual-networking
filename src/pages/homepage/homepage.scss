@@ -6,7 +6,7 @@
     color: white;
     .mainImage {
         height: 85vh;
-        background-image: linear-gradient( to right bottom, rgba(blue, 0.6), rgba(rgb(79, 79, 235), 0.6)), url(../../img/cover_image_1920x900.jpg);
+        background-image: linear-gradient( to right bottom, rgba(blue, 0.3), rgba(rgb(79, 79, 235), 0.3)), url(../../img/cover_image.jpg);
         background-size: cover;
         background-position: top;
         position: relative;
@@ -18,12 +18,14 @@
             text-align: center;
             h2 {
                 padding-top: 50px;
+                text-shadow: 2px 2px 2px rgb(0, 0, 0);
                 @media(max-width: 800px) {
                     font-size: 25px;
                     padding-top: 30px;
                 }
             }
             h1 {
+                text-shadow: 2px 2px 2px rgb(0, 0, 0);
                 @media(max-width: 800px) {
                     font-size: 35px;
                 }

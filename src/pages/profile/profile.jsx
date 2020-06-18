@@ -45,7 +45,9 @@ class Profile extends React.Component{
             step:0,
             message:'fill in all the fields, the ones marked with a red star are a must',
             jobdescription:'',
-            userData:''
+            userData:'', 
+            coverImg:'',
+            smallImg:''
         }
         
         
@@ -322,7 +324,7 @@ class Profile extends React.Component{
                     return(
                         <div className='first-col'>
                         <h1 className="header">Upload your images!</h1>
-                        <UploadToFirebase />
+                        <UploadToFirebase small={this.state.smallImg} cover={this.state.coverImg}/>
                         </div>
                     )
                  

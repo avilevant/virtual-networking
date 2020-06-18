@@ -101,7 +101,8 @@ class SignIn extends React.Component{
 
             </div>
             <img src={signinPic} className="img" alt="signin"></img> 
-            {this.spinner}
+           
+           
         </div>
             </div>
        

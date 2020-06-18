@@ -20,14 +20,8 @@
     .img {
         height: 60%;
         margin: auto;
-        @media(max-width: 800px) {
-            height: 100%;
-            width: 100%;
-            margin: auto;
-            opacity: .5;
-        }
-        @media(max-width: 400px) {
-            padding-top: 50px;
+        @media(max-width: 600px) {
+            visibility: hidden;
         }
     }
     .signForm {

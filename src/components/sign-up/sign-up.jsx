@@ -1,7 +1,7 @@
 import React from 'react';
 import './sign-up.scss';
 import {withRouter} from 'react-router-dom';
-import signupPic from '../../img/2853458.jpg';
+import signupPic from '../../img/graphics/register.png';
 import Cookies from 'js-cookie';
 import Button from '../button/button';
 
@@ -80,7 +80,7 @@ class SignUp extends React.Component{
         return(
          <div className="container">  
             <div className='signForm'>
-            <h1 className="header">Sign Up</h1>
+            <h1 className="header">Register</h1>
             <form onSubmit={this.handleSubmit}>
             
             <div>

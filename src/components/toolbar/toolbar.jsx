@@ -6,6 +6,7 @@ import menuopen from '../../img/hamburger/x_and_menu_icons-57.png';
 import SideMenu from '../sidemenu/sidemenu';
 import logo from '../../img/menuicons/logo_dark-66.png';
 import Cookies from 'js-cookie';
+import { isMobile } from 'react-device-detect';
 
 
 
@@ -82,6 +83,12 @@ class Toolbar extends React.Component{
            
     })  } 
 
+    spaceToolBar(){
+      if(!isMobile){
+        return 
+      }
+    }
+
 
     render(){
 
@@ -103,7 +110,6 @@ class Toolbar extends React.Component{
                     
                    
                     <div className='toolbar-businessName'>{logoDisplay}</div>
-                    
                     <div className='margin'></div>
                     <div className='toolbar-nav-items'>
                     <ul>

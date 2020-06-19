@@ -316,7 +316,7 @@ class Profile extends React.Component{
                         
                         {this.createCheckboxes()}
                         </div>
-                        <input type="submit" value='Update Profile' className='button' />
+                       
                         </div>
                     )
                   

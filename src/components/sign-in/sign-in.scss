@@ -13,15 +13,16 @@
         margin: 0;
         grid-template-columns: 1fr;
         width: 100vw;
-        height: 100vh;
+        // height: 90vh;
         // width: 90vw;
-        // height: 95vh;
+        height: 100vh;
     }
     .img {
         height: 60%;
         margin: auto;
         @media(max-width: 600px) {
-            visibility: hidden;
+            height: 14rem;
+            margin: 0 auto
         }
     }
     .signForm {
@@ -31,6 +32,8 @@
         @media(max-width: 800px) {
             padding: 30px;
             z-index: 10;
+            margin-bottom: 0;
+            margin-top: 5rem;
         }
         .header {
             margin-bottom: 40px;

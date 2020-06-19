@@ -138,7 +138,7 @@ const UploadToFirebase =(props)=>{
      
 
       </div>
-      <button onClick={handleUpload} className='buttonImgUpload'>Upload Your Images</button>
+      <button onClick={handleUpload} className='buttonComp'>Let's Party</button>
         </div>
     )
 

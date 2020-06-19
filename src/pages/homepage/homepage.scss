@@ -17,7 +17,8 @@
             transform: translate(-50%, -50%);
             text-align: center;
             h2 {
-                padding-top: 50px;
+                padding: 20px 50px;
+                padding-bottom: 0;
                 text-shadow: 2px 2px 2px rgb(0, 0, 0);
                 @media(max-width: 800px) {
                     font-size: 25px;
@@ -25,8 +26,10 @@
                 }
             }
             h1 {
+                font-weight: 800;
                 text-shadow: 2px 2px 2px rgb(0, 0, 0);
                 @media(max-width: 800px) {
+                    padding-top: 20px;
                     font-size: 35px;
                 }
             }

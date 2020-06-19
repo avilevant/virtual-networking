@@ -8,7 +8,7 @@
        display: grid;
        grid-template-rows: 54vh 16vh 29vh;
        @media(max-width: 800px) {
-           grid-template-rows: 36vh 14vh 42vh;
+           grid-template-rows: 36vh 12vh 44vh;
        }
        //    @media(max-width: 400px) {
        //        grid-template-rows: 36vh 19vh 45vh;
@@ -33,27 +33,27 @@
            height: 16vh;
            h1 {
                font-size: 43px;
+               margin: auto 0;
            }
            h2 {
                font-size: 25px;
                line-height: 45px;
+               margin: auto 0;
            }
            @media(max-width: 800px) {
                line-height: 40px;
                padding-left: 10px;
-               height: 14vh;
+               height: 11vh;
                h2 {
                    font-size: 17px;
-                   line-height: 30px;
                }
            }
            @media(max-width: 400px) {
                line-height: 40px;
                padding-left: 10px;
-               height: 14vh;
+               height: 11vh;
                h2 {
                    font-size: 12px;
-                   line-height: 30px;
                }
            }
        }
@@ -109,6 +109,9 @@
            height: 16vh;
            position: relative;
            top: -3%;
+           @media(max-width: 800px) {
+               height: 100%;
+           }
            .pop {
                width: 50px;
                @media(max-width: 800px) {

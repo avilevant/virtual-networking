@@ -6,7 +6,7 @@ import menuopen from '../../img/hamburger/x_and_menu_icons-57.png';
 import SideMenu from '../sidemenu/sidemenu';
 import logo from '../../img/menuicons/logo_dark-66.png';
 import Cookies from 'js-cookie';
-import { isMobile } from 'react-device-detect';
+
 
 
 
@@ -18,7 +18,7 @@ import { isMobile } from 'react-device-detect';
 class Toolbar extends React.Component{
 
     state={
-        menuWindowOpen:true,
+        menuWindowOpen:false,
         id1:'',
         ref1:'',
         name1:'',
@@ -64,34 +64,27 @@ class Toolbar extends React.Component{
      
 
     menuClosed =()=>{
-       this.toggleButtonChange()
-       console.log(this.state.menuWindowOpen)
        return  <img src={menuopen} alt='menuClosed'  className='menuBar' />
             }
 
 
     menuOpen =()=>{
-        this.toggleButtonChange()
-        console.log(this.state.menuWindowOpen)
-        return  <img src={menuclosed} alt='menuClosed'  className='menuBar' />
+        return <img src={menuclosed} alt='menuClosed'  className='menuBar' />
                 }        
        
     
     toggleButtonChange =()=>{
-       this.setState((prevState)=>{
-           return  {menuWindowOpen:!prevState.menuWindowOpen}
-           
+        this.setState((prevState)=>{
+        return  {menuWindowOpen:!prevState.menuWindowOpen}
+          
     })  } 
 
-    spaceToolBar(){
-      if(!isMobile){
-        return 
-      }
-    }
+  
 
 
     render(){
-
+        
+       
         let logoDisplay 
 
         if(this.props.name){
@@ -122,7 +115,9 @@ class Toolbar extends React.Component{
                     </div>
                     <div className='toogleButton'>
                     
-                    <ToggleButton default={this.menuClosed} change={this.menuOpen} />
+                    <ToggleButton  stateChange={this.toggleButtonChange} basic={this.menuClosed} change={this.menuOpen}/>
+                    
+
                     </div>
            
                 </nav>

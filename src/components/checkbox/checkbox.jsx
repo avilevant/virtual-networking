@@ -38,7 +38,6 @@ class Checkbox extends React.Component {
                             value={label}
                             checked={isChecked}
                             onChange={() => {this.toggleCheckboxChange() }}
-                            //onChange={ /* add check herer */arrayLength< numberOfCards || this.state.isChecked ? this.//toggleCheckboxChange : console.log(`choose only ${numberOfCards} cards`)}
                             key={id}
                             className='input'
                         />

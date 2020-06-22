@@ -15,6 +15,7 @@ const UploadToFirebase =(props)=>{
     const [url2,setUrl2]=useState(props.small||'');
     const [progress, setProgress] = useState(0)
     const token =  Cookies.get('token')
+    console.log(image)
    
     // console.log(token)
 
@@ -25,15 +26,15 @@ const UploadToFirebase =(props)=>{
            
 
         if(event.target.files[0]){
-            //update state for both images
-            image===null?setImage(event.target.files[0]) : setImage2(event.target.files[0])
             
             //preview before upload
             const imagePreview = new FileReader()
 
             if(event.target.name === 'background'){
+                setImage(event.target.files[0])
                 imagePreview.addEventListener("load",()=>setUrl1(imagePreview.result),false)
             }else{
+                setImage2(event.target.files[0])
                 imagePreview.addEventListener("load",()=>setUrl2(imagePreview.result),false)
             }
             imagePreview.readAsDataURL(event.target.files[0])
@@ -58,49 +59,51 @@ const UploadToFirebase =(props)=>{
         
         
         filesToUpdate.forEach(fileToUpdate=>{
-            const uploadTask = storage.ref(`images/${fileToUpdate.image.name}`).put(fileToUpdate.image);
+            if(fileToUpdate.image!==null){
 
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress)
-            },
-            error => {console.log(error)},
-            ()=>{
-                //get url from storage for reference
-                storage
-                    .ref('images')
-                    .child(fileToUpdate.image.name)
-                    .getDownloadURL()
-                    .then(url=>{
-                       console.log('before updating url: ' ,'url: ' ,url)
-                           fileToUpdate.setUrl(url);
-                        
-                        return (url);
-                    })
-                    .then( url=> fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg/' + fileToUpdate.index, {
-                        method: 'post',
-                        headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
-                        body: JSON.stringify({
-                            url:url
+
+                const uploadTask = storage.ref(`images/${fileToUpdate.image.name}`).put(fileToUpdate.image);
+    
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    setProgress(progress)
+                },
+                error => {console.log(error)},
+                ()=>{
+                    //get url from storage for reference
+                    storage
+                        .ref('images')
+                        .child(fileToUpdate.image.name)
+                        .getDownloadURL()
+                        .then(url=>{
+                           console.log('before updating url: ' ,'url: ' ,url)
+                               fileToUpdate.setUrl(url);
+                            
+                            return (url);
                         })
-            
-                    })
-                    // .then(response =>response.json())
-                    .then(response =>response.text())
-                    .then(data=> {
-                            console.log(data)
-                           
+                        .then( url=> fetch('https://afternoon-thicket-58274.herokuapp.com/uploadImg/' + fileToUpdate.index, {
+                            method: 'post',
+                            headers: {'Content-Type': 'application/json', 'Authorization':'Bearer '+token },
+                            body: JSON.stringify({
+                                url:url
+                            })
+                
                         })
-                      )
-        }
-        )})
-       
+                        .then(response =>response.json())
+                        // .then(response =>response.text())
+                        .then(data=> {
+                                console.log(data)
+                               
+                            }))
+            })}
+    
+    })    
         
-    }
+ }
     
 
     
@@ -138,7 +141,7 @@ const UploadToFirebase =(props)=>{
      
 
       </div>
-      <button onClick={handleUpload} className='buttonComp'>Let's Party</button>
+      <button onClick={handleUpload} className='buttonComp'>Build My Card</button>
         </div>
     )
 

@@ -6,9 +6,7 @@ let popshow = false
 const ToggleButton = (props)=>{
 
     
-    const [buttonState,setButtonState] = useState(props.default);
-    // const toggleState=()=>{ buttonState===props.default ? setButtonState(props.change) checking=1 : setButtonState(props.default) checking=2
-    //     console.log('pressed')
+    const [buttonState,setButtonState] = useState(props.basic);
 
     const toggleState =()=>{
       
@@ -19,7 +17,7 @@ const ToggleButton = (props)=>{
             
        
         }else if(popshow===true){
-            setButtonState(props.default)
+            setButtonState(props.basic)
             popshow=false
             
         }
@@ -27,7 +25,7 @@ const ToggleButton = (props)=>{
     }  
 
     return(
-        <button onClick={toggleState} className='buttonToggle'>{buttonState}</button>
+        <button onClick={()=>{toggleState();props.stateChange()}} className='buttonToggle'>{buttonState}</button>
       
     )
 

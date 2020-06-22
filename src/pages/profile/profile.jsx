@@ -3,7 +3,7 @@ import DropSelect from "../../components/drop-select/drop-select";
 import './profile.scss';
 import Checkbox from '../../components/checkbox/checkbox';
 import BusinessList from '../../components/business-list/business-list';
-import {OccupationList} from '../../components/occupationlist/occupationlist';
+import OccupationList from '../../components/occupationlist/occupationlist';
 import {withRouter} from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Steps,Panel,ButtonGroup,Button } from 'rsuite';
@@ -189,7 +189,7 @@ class Profile extends React.Component{
         
             {OccupationList.forEach(el=>tempArray.push(el.label))}
                
-            {tempArray.map(label=>  <option  value={label}>{label}</option>)}
+            {tempArray.map(label=>  <option  key={label}>{label}</option>)}
        
         </select>)
     }
@@ -342,7 +342,7 @@ class Profile extends React.Component{
                         <div>
                         <img src={imgAstrix} alt='astix' className='colorIcon'/>
                         <i className="fa fa-user icon"></i> 
-                        <input className='input' name='name' type='text' value={this.state.name} placeholder='Business Name' onChange={this.handleChange} required ></input>
+                        <input className='input' name='name' type='text' value={this.state.name} placeholder='Business Name' onChange={this.handleChange}  maxLength="15" required ></input>
                         </div>
 
                         <div>
@@ -373,7 +373,7 @@ class Profile extends React.Component{
                         <div>
                         <img src={imgAstrix} alt='astix' className='colorIcon'/>
                         <i className="fa fa-user-circle icon icon-1"></i> 
-                        <input className='input' name='jobdescription' type='text' value={this.state.jobdescription} placeholder='job Description' 
+                        <input className='input' name='jobdescription' type='text' value={this.state.jobdescription} placeholder='job Description' maxLength="15"
                         onChange={this.handleChange} required ></input>
                         </div>
                       

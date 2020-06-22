@@ -16,14 +16,12 @@ import  img12 from '../../img/iconsfinal/1-16.png';
 
 
 const CreateCardList =(props) => {
-// console.log(props.phone)
     
                 
                const cardList = [
                {
                    title:'CALL',
-                //    icon:<ion-icon name="call-outline"></ion-icon>,
-                icon:<img src={img1} alt='img1' className='svg'/>,
+                    icon:<img src={img1} alt='img1' className='svg'/>,
                    id:1,
                    callback: ()=> {
                     if (isMobile) {
@@ -39,7 +37,6 @@ const CreateCardList =(props) => {
                },
                {
                    title:'SMS',
-                //    icon: <ion-icon name="chatbox-ellipses-outline"></ion-icon>,
                    icon:<img src={img2} alt='img2' className='svg'/>,
                    id:2,
                    callback: ()=>{ 
@@ -50,15 +47,10 @@ const CreateCardList =(props) => {
                         alert('this option is available on mobile only')}
                     }
 
-                //     if (isMobile) {
-                //         return <div> call made on mobile</div>
-                // }
-                //         console.log('sms clicked')
-                //         return <h1>say hello to my little friend</h1>}
+               
                },
                {
                    title:'WHATSAPP',
-                //    icon: <ion-icon name="logo-whatsapp"></ion-icon>,
                    icon:<img src={img3} alt='img3' className='svg'/>,
                    callback: () =>{ 
                     if (isMobile) {
@@ -72,26 +64,21 @@ const CreateCardList =(props) => {
                },
                {
                    title:'EMAIL',
-                //    icon:<ion-icon name="mail-outline"></ion-icon>,
                    icon:<img src={img4} alt='img4' className='svg'/>,
                    callback: ()=> window.location=`mailto:${props.email}`,
                    id:4
                },
                {
                    title:'LOCATION',
-                //    icon:<ion-icon name="location-outline"></ion-icon>,
                    icon:<img src={img5} alt='img5' className='svg'/>,
-                //    callback: () =>window.open("http://localhost:3000/map"),
-                // callback: () =>window.open(`http://google.com/maps/search/?api=1&${encoded}`),
-                callback: () =>{
+                   callback: () =>{
                     const encoded = encodeURIComponent(props.location)
                     if(isMobile){
                           window.open(`http://waze.com/ul?q=${encoded}&z=17`)
                         }
                     
                     window.open(`http://google.com/maps/search/?api=1&query=${encoded}`)},
-                //     window.open(`http://waze.com/ul?q=${encoded}&z=17`)},
-                   id:5
+                    id:5
                },
                {
                    title:'FACEBOOK',
@@ -101,7 +88,6 @@ const CreateCardList =(props) => {
                },
                {
                    title:'WEBSITE',
-                //    icon: <ion-icon name="globe-outline"></ion-icon>,
                    icon:<img src={img7} alt='img7' className='svg'/>,
                    callback: () =>window.open(props.website),
                    id:7
@@ -134,7 +120,6 @@ const CreateCardList =(props) => {
                 title:'SHARE',
                 icon:<img src={img11} alt='img11' className='svg'/>,
                 callback: () =>navigator.share({url:props.personalprofile}) ,
-                //change later to personalprofile
                 id:11
             }    
            ];

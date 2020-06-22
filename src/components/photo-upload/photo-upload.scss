@@ -12,7 +12,6 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 120px 120px;
-    // row-gap: 20px;
     @media(max-width: 800px) {
         display: inline;
     }
@@ -38,12 +37,10 @@ p {
     display: inline-block;
     cursor: pointer;
     color: rgb(255, 255, 255);
-    // font-family: Arial;
     font-size: 17px;
     font-weight: 500;
     padding: 9px 22px;
     text-decoration: none;
-    // box-shadow: 3px 4px 5px 1px #76a8da;
     margin-top: 20px;
     &:hover {
         background-color: #e1effd;

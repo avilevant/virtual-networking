@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import image1 from '../../img/updatediconsforhomapage/4-30.png';
 import image2 from '../../img/updatediconsforhomapage/4-31.png';
 import image3 from '../../img/updatediconsforhomapage/4-32.png';
+import mockup from '../../img/graphics/shutterstock_533954779 [Converted] IPHONE MOCKUP-01.png'
 import Toolbar from '../../components/toolbar/toolbar';
 
 
@@ -39,11 +40,16 @@ const HomePage = () =>{
                         <h1>VIRTUAL NETWORKING </h1>   
                         <h2>networking in a digital world</h2>
                         <button onClick={register}>Register Now</button>
+                       
                         </div>
                         
                         
                        
                     </div>
+
+                   
+                    <img src={mockup} alt='mockup' className='mockup'/>
+                   
 
                         <div className='content'>
                         <div  className='content-image'>

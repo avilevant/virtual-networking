@@ -51,4 +51,4 @@ export const OccupationList = [
     },
 ]
 
-export   const OccupationList1 =['health&care',"marketing","art&design","consulting","sales"]
+export   default OccupationList;

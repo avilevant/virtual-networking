@@ -35,18 +35,28 @@
             }
         }
     }
+    .mockup {
+        width: 40%;
+        position: relative;
+        top: -200px;
+        left: 30%;
+        z-index: 100;
+        @media(max-width: 600px) {
+            top: -100px;
+            width: 60%;
+            left: 20%;
+        }
+    }
     button {
         background-color: #3498ff;
         border-radius: 30px;
         display: inline-block;
         cursor: pointer;
         color: rgb(255, 255, 255);
-        //  font-family: Arial;
         font-size: 17px;
         font-weight: 500;
         padding: 9px 22px;
         text-decoration: none;
-        //  box-shadow: 3px 4px 0px 0px #2b7fd3;
         margin-top: 60px;
         &:hover {
             background-color: #e1effd;

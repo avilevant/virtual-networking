@@ -10,13 +10,8 @@
        @media(max-width: 800px) {
            grid-template-rows: 36vh 12vh 44vh;
        }
-       //    @media(max-width: 400px) {
-       //        grid-template-rows: 36vh 19vh 45vh;
-       //    }
        .bigImg {
-           //    margin: 0px 10px;
            display: grid;
-           //    border-top: 5px solid black;
            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
            height: 54vh;
            width: 100%;

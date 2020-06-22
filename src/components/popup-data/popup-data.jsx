@@ -4,7 +4,7 @@ import './popup-data.scss';
 
 const DataPop = (props) =>{
     let classNames = 'dataProp'
-    if(props.show===true){
+    if(props.show===false){
         console.log('show')
         classNames = 'dataProp dataProp-open'
     }

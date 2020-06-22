@@ -47,11 +47,11 @@ class Directory extends React.Component{
     
 
     //images - big image and small logo
-    insertImg(){
+    renderCoverImg(){
            return <img src={this.state.coverImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Flaptop-1209008_1280_500x500.jpg?alt=media&token=ec7989cc-0004-42af-8608-1622835602ef"} alt='user data' className='bigImg'  />
     }
 
-    insertImg1(){
+    renderSmallImg(){
            return <img src={this.state.smallImg || "https://firebasestorage.googleapis.com/v0/b/virtual-networking-278509.appspot.com/o/images%2Fdog-316598_1280_500x500.jpg?alt=media&token=90842756-a430-4a93-98da-339d3ae181d1"} alt='user data' className='smallImg'  />
     }
 
@@ -60,15 +60,24 @@ class Directory extends React.Component{
    
     //expended information about user
     infoPopShow=()=>{
-        this.setState({popInfo:true})
+        
         return <img src={image2} alt='pop'  className='pop' />
     }
 
     infoPopHide=()=>{
-        this.setState({popInfo:false})
+        
         return <img src={image1} alt='pop'  className='pop' />
     }
 
+    infoStateToggle=()=>{
+        console.log('click')
+        this.setState((prevState)=>{
+            return {popInfo:!prevState.popInfo}
+        })
+    }
+    
+    
+  
     
 
      
@@ -165,14 +174,14 @@ class Directory extends React.Component{
             <div className="dir">
           
                 <div >
-                {this.insertImg()}
+                {this.renderCoverImg()}
                 </div>
 
                 
             
                 <div className='smallImgFig' >
                     <div className='smallImgFigInner'>
-                    {this.insertImg1()}
+                    {this.renderSmallImg()}
                     </div>
                             
                     <div className='title'>
@@ -182,7 +191,7 @@ class Directory extends React.Component{
                     </div>
 
                     <div className='pop1'>
-                    <ToggleButton default={this.infoPopHide} change={this.infoPopShow}/>
+                    <ToggleButton  stateChange={this.infoStateToggle} basic={this.infoPopHide} change={this.infoPopShow}/>
                     </div>
                 </div>   
 
